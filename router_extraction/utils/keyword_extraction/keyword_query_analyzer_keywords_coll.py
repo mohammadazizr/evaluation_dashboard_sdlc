@@ -10,6 +10,8 @@ import truststore
 import os
 from nltk.stem import SnowballStemmer
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+from qdrant_client import QdrantClient
+from qdrant_client.models import Filter, FieldCondition, MatchValue
 
 truststore.inject_into_ssl()
 
@@ -95,6 +97,98 @@ def clean_query(query, stopword_set):
 
     return " ".join(final_list)
 
+def process_file_path(file_path):
+    """
+    Process file_path by:
+    1. Removing 'ocr_result/' and the first folder after it
+    2. Applying text replacements for known patterns
+    3. Removing specific folders (Agile/, Waterfall/, none/)
+    4. Keeping the filename
+
+    Handles both forward slash (/) and backward slash (\) path separators.
+
+    Examples:
+    Input: "ocr_result/Operation Request Portal/Workflow Management System/Workflow For Business Operation Center (BOC)/TSD/01/output.md"
+    Output: "WMS/BOC/TSD/01/output.md"
+
+    Input: "D:\\Simplify\\rag-sdlc\\output\\ocr_result\\Operation Request Portal\\Workflow Management System\\Workflow For Business Operation Center (BOC)\\TSD\\01\\output.md"
+    Output: "WMS/BOC/TSD/01/output.md"
+    """
+    # Normalize path: convert backslash to forward slash for consistent processing
+    normalized_path = file_path.replace("\\", "/")
+
+    # Find and extract everything after "ocr_result/"
+    if "ocr_result/" in normalized_path:
+        normalized_path = normalized_path.split("ocr_result/", 1)[1]
+
+    # Split into parts
+    parts = normalized_path.split("/")
+
+    # Remove the first folder (which can be any name like "Operation Request Portal")
+    if len(parts) > 1:
+        parts = parts[1:]
+
+    # Join back
+    processed_path = "/".join(parts)
+
+    # Apply text replacements
+    replacements = {
+        "Operation Request Portal 2025": "ORP",
+        "ORP Portal": "ORP_Portal",
+        "ORP Workflow": "ORP_Workflow",
+        "Workflow Management System": "WMS",
+        "Workflow For Business Operation Center (BOC)": "BOC",
+        "Workflow For Business Operation Center": "BOC",
+        "Workflow For Head Office": "Head Office",
+    }
+
+    for old_text, new_text in replacements.items():
+        processed_path = processed_path.replace(old_text, new_text)
+
+    # Remove specific folder names if they exist in the path
+    folders_to_remove = ["Agile", "Waterfall", "none"]
+    for folder in folders_to_remove:
+        processed_path = processed_path.replace(f"{folder}/", "")
+
+    # Clean up any double slashes that might have been created
+    while "//" in processed_path:
+        processed_path = processed_path.replace("//", "/")
+
+    # Remove leading/trailing slashes
+    processed_path = processed_path.strip("/")
+
+    return processed_path
+
+
+def get_qdrant_client(qdrant_url, qdrant_api_key=None):
+    """Initialize and return Qdrant client."""
+    try:
+        client = QdrantClient(
+            url=qdrant_url,
+            api_key=qdrant_api_key
+        )
+        return client
+    except Exception as e:
+        print(f"Error connecting to Qdrant: {e}")
+        raise
+
+
+def query_keywords_collection(client, collection_name="keywords_coll"):
+    """
+    Query all points from keywords_coll collection.
+    Returns list of points with their payload.
+    """
+    try:
+        points, _ = client.scroll(
+            collection_name=collection_name,
+            limit=10000,  # Adjust if needed
+        )
+        return points
+    except Exception as e:
+        print(f"Error querying collection '{collection_name}': {e}")
+        raise
+
+
 def analyze_keywords(user_input, logger=None):
     import sys
     import time
@@ -102,8 +196,10 @@ def analyze_keywords(user_input, logger=None):
 
     # Import config from project root
     sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
-    from config import (STOPWORDS_ID_PATH, STOPWORDS_EN_PATH, LIST_ALL_COLLECTIONS_PATH,
-                        EXTRACTED_KEYWORDS_PATH)
+    from config import (STOPWORDS_ID_PATH, STOPWORDS_EN_PATH, EXTRACTED_KEYWORDS_PATH,
+                        QDRANT_URL, QDRANT_API_KEY)
+    # LIST_ALL_COLLECTIONS_PATH is now commented out - using Qdrant keywords_coll instead
+    # from config import LIST_ALL_COLLECTIONS_PATH
 
     start_time = time.time()
 
@@ -123,38 +219,52 @@ def analyze_keywords(user_input, logger=None):
         keywords = cleaned_query.split(" ")
         print("="*50)
 
-        with open(str(LIST_ALL_COLLECTIONS_PATH), 'r', encoding='utf-8') as f:
-            # Parsing the JSON file into a Python dictionary
-            data = json.load(f)
+        # --- Using Qdrant keywords_coll (NEW) ---
+        client = get_qdrant_client(QDRANT_URL, QDRANT_API_KEY)
+        points = query_keywords_collection(client, collection_name="keywords_coll")
 
-        # Filter collection dengan collection_name = "doc_type_coll"
-        doc_collection = None
-        for collection in data["collections"]:
-            if collection.get("collection_name") == "doc_type_coll":
-                doc_collection = collection.get("sample_points", [])
-                break
+        if not points:
+            raise ValueError("No points found in Qdrant collection 'keywords_coll'")
 
-        if doc_collection is None:
-            raise ValueError("Collection 'doc_type_coll' not found in list_all_collections_new.json")
+        # --- OLD CODE (commented out) - Previously using LIST_ALL_COLLECTIONS_PATH ---
+        # with open(str(LIST_ALL_COLLECTIONS_PATH), 'r', encoding='utf-8') as f:
+        #     # Parsing the JSON file into a Python dictionary
+        #     data = json.load(f)
+        #
+        # # Filter collection dengan collection_name = "doc_type_coll"
+        # doc_collection = None
+        # for collection in data["collections"]:
+        #     if collection.get("collection_name") == "doc_type_coll":
+        #         doc_collection = collection.get("sample_points", [])
+        #         break
+        #
+        # if doc_collection is None:
+        #     raise ValueError("Collection 'doc_type_coll' not found in list_all_collections_new.json")
 
         kw_count = {}
 
-        for kw in keywords :
-            if kw not in kw_count.keys() :
-                kw_count[kw]={"path":{},"total_count":0}
-            for item in doc_collection:
-                if kw in [str(word).lower() for word in item["payload"]["keywords"]] :
-                    doc_type_name = item["payload"]["doc_type_name"]
-                    parent_project_name = item["payload"]["parent_project_name"]
-                    parent_activity_name = item["payload"]["parent_activity_name"]
-                    doc_path = parent_project_name+"\\"+parent_activity_name+"\\"+doc_type_name
+        for kw in keywords:
+            if kw not in kw_count.keys():
+                kw_count[kw] = {"path": {}, "total_count": 0}
 
-                    if doc_path not in kw_count[kw]["path"].keys():
-                        kw_count[kw]["path"][doc_path]=1
-                        kw_count[kw]["total_count"]+=1
-                    else :
-                        kw_count[kw]["path"][doc_path]+=1
-                        kw_count[kw]["total_count"]+=1
+            # Process each point from keywords_coll
+            for point in points:
+                payload = point.payload
+                point_keywords = payload.get("keyword", [])
+
+                # Check if keyword matches any in the point
+                if kw in [str(word).lower() for word in point_keywords]:
+                    file_path = payload.get("file_path", "")
+
+                    # Process file path
+                    processed_path = process_file_path(file_path)
+
+                    if processed_path not in kw_count[kw]["path"].keys():
+                        kw_count[kw]["path"][processed_path] = 1
+                        kw_count[kw]["total_count"] += 1
+                    else:
+                        kw_count[kw]["path"][processed_path] += 1
+                        kw_count[kw]["total_count"] += 1
 
         # Use dictionary comprehension to filter
         cleaned_results = {
