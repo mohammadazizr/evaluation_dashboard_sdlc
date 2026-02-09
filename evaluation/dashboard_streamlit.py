@@ -414,7 +414,7 @@ def load_default_results():
     
     # return None
     try:
-        default_path = "../output/evaluation_results_new.json"
+        default_path = r"../output/evaluation_results_new.json"
         if os.path.exists(default_path):
             with open(default_path, 'r', encoding='utf-8') as f:
                 return json.load(f)
