@@ -391,28 +391,35 @@ class StreamlitDashboard:
 
 def load_default_results():
     """Load default evaluation results file"""
+    # try:
+    #     sys.path.insert(0, str(Path(__file__).parent.parent))
+    #     from config import EVALUATION_RESULTS_PATH
+    #     default_path = EVALUATION_RESULTS_PATH
+    # except:
+    #     possible_paths = [
+    #         "evaluation_results_new.json",
+    #         "results/evaluation_results_new.json",
+    #         "../evaluation_results_new.json",
+    #         "data/evaluation_results_new.json"
+    #     ]
+    #     default_path = None
+    #     for path in possible_paths:
+    #         if os.path.exists(path):
+    #             default_path = path
+    #             break
+    
+    # if default_path and os.path.exists(default_path):
+    #     with open(default_path, 'r', encoding='utf-8') as f:
+    #         return json.load(f)
+    
+    # return None
     try:
-        sys.path.insert(0, str(Path(__file__).parent.parent))
-        from config import EVALUATION_RESULTS_PATH
-        default_path = EVALUATION_RESULTS_PATH
-    except:
-        possible_paths = [
-            "evaluation_results_new.json",
-            "results/evaluation_results_new.json",
-            "../evaluation_results_new.json",
-            "data/evaluation_results_new.json"
-        ]
-        default_path = None
-        for path in possible_paths:
-            if os.path.exists(path):
-                default_path = path
-                break
-    
-    if default_path and os.path.exists(default_path):
-        with open(default_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    
-    return None
+        default_path = "../output/evaluation_results_new.json"
+        if os.path.exists(default_path):
+            with open(default_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+    except Exception:
+        return None
 
 
 def main():
