@@ -1,0 +1,1453 @@
+{
+  "summary": {
+    "success_rate": 86.76,
+    "avg_precision": 22.65,
+    "avg_precision_at_3": 50.98,
+    "mrr": 0.6966
+  },
+  "total_questions": 68,
+  "detailed_results": [
+    {
+      "question": "What internal API does the POST /v4/company/notificationBanner endpoint use to check for system downtime as part of its feature off logic, and in which microservice is that API located?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_0",
+      "positions_found": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "correct_chunks": 4,
+      "precision": 0.4,
+      "precision_at_3": 1.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "Copy of R6B - Onboarding - POST-/v4/company/notificationBanner",
+        "R4 - GET internal/system/v1/check-downtime",
+        "R5 - GET internal/system/v1/check-downtime",
+        "R5 - Onboarding - POST-/v4/company/notificationBanner"
+      ],
+      "missing_docs": [
+        "MAIN DOCUMENT: R5 - Onboarding - POST-/v4/company/notificationBanner",
+        "CONNECTED DOCUMENT: GET internal/system/v1/check-downtime"
+      ]
+    },
+    {
+      "question": "In the sequence diagram for POST /v4/company/notificationBanner, under what condition is the banner name set to 'advanced_reupload'?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_1",
+      "positions_found": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "correct_chunks": 5,
+      "precision": 0.5,
+      "precision_at_3": 1.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - Onboarding - POST-/v4/company/notificationBanner",
+        "R4 - Onboarding - POST-/v3/company/notificationBanner",
+        "R4 - Onboarding - POST-/v2/company/notificationBanner",
+        "Copy of R6B - Onboarding - POST-/v4/company/notificationBanner"
+      ],
+      "missing_docs": [
+        "MAIN DOCUMENT: R5 - Onboarding - POST-/v4/company/notificationBanner"
+      ]
+    },
+    {
+      "question": "What is the purpose of calling the 'GET internal/system/v1/check-downtime' API in the 'POST company-onboarding/v1/registration-info' flow, and what response triggers a feature-off scenario?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_2",
+      "positions_found": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "correct_chunks": 4,
+      "precision": 0.4,
+      "precision_at_3": 0.6667,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - POST company-onboarding/v1/registration-info",
+        "R4 - GET internal/system/v1/check-downtime",
+        "R5 - GET internal/system/v1/check-downtime",
+        "GET internal/system/v1/check-downtime"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "How is the 'image' field constructed in the 'infoList' of the response for the 'POST company-onboarding/v1/registration-info' API?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_3",
+      "positions_found": [
+        1
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.3333,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - POST company-onboarding/v1/registration-info"
+      ],
+      "missing_docs": [
+        "R5 - POST company-onboarding/v1/registration-info"
+      ]
+    },
+    {
+      "question": "What is the logic for determining the value of 'storeLOB' in the company-onboarding/v1/company-list response, and what is the fallback value if no mapping is found?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_4",
+      "positions_found": [
+        1,
+        2,
+        5
+      ],
+      "correct_chunks": 3,
+      "precision": 0.3,
+      "precision_at_3": 0.6667,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - POST company-onboarding/v1/company-list",
+        "R5 - POST company-onboarding/v1/company-list"
+      ],
+      "missing_docs": [
+        "System - POST-system/v1/merchant-category/list"
+      ]
+    },
+    {
+      "question": "How is the phone number (merTelNo) sourced and formatted when making the Merchant Inquiry V2 API call in the company-onboarding flow?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_5",
+      "positions_found": [
+        4
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - POST company-onboarding/v1/company-list"
+      ],
+      "missing_docs": [
+        "R5 - POST company-onboarding/v1/company-list"
+      ]
+    },
+    {
+      "question": "What changes were made to the onboarding process to handle duplicate requests to MTI when receiving a responseCode 99 during the onboarding flow?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_6",
+      "positions_found": [
+        3
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.3333,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - POST company-onboarding/v1/register/execution"
+      ],
+      "missing_docs": [
+        "R5 - Onboarding - POST multi-outlet/v2/register/execution"
+      ]
+    },
+    {
+      "question": "Which microservice is responsible for handling document uploads to Object Storage in the Bank Mandiri Livin Merchant system?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_7",
+      "positions_found": [
+        1,
+        4
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.3333,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R4 - POST internal/content/v1/document/upload",
+        "POST internal/content/v1/document/upload"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What are the conditions under which the /backoffice/v1/cdd/submit API returns response code 10127 (Account Not Active)?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_8",
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "precision_at_3": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "R5 - POST - /backoffice/v1/cdd/submit"
+      ]
+    },
+    {
+      "question": "Which microservice and external system are involved in checking a merchant's loan status during the CDD submission process, and what transaction code is used?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_9",
+      "positions_found": [
+        5
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - POST - /backoffice/v1/cdd/submit"
+      ],
+      "missing_docs": [
+        "System - POST system/v1/LoanInquiry"
+      ]
+    },
+    {
+      "question": "What HTTP status code and custom status code are returned by the POST company-onboarding/v1/feature/status endpoint when the onboarding feature is turned off, and what triggers this response?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_10",
+      "positions_found": [
+        1,
+        2
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.6667,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - POST company-onboarding/v1/feature/status",
+        "POST company-onboarding/v1/feature/status"
+      ],
+      "missing_docs": [
+        "GET internal/system/v1/check-downtime"
+      ]
+    },
+    {
+      "question": "What service code must be included in the request header when calling GET internal/system/v1/check-downtime from the company-onboarding microservice, and where is this specified?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_11",
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "precision_at_3": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "R5 - POST company-onboarding/v1/feature/status"
+      ]
+    },
+    {
+      "question": "What is the purpose of the eMas Casa Account Inquiry API (0019) in the context of the individual-onboarding/v1/cdd/data-submission flow, and when is it triggered?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_12",
+      "positions_found": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "correct_chunks": 4,
+      "precision": 0.4,
+      "precision_at_3": 1.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - POST individual-onboarding/v1/cdd/data-submission",
+        "R4 - POST individual-onboarding/v1/cdd/data-submission",
+        "R4 - System - POST system/v1/casa-inquiry"
+      ],
+      "missing_docs": [
+        "System - POST system/v1/casa-inquiry"
+      ]
+    },
+    {
+      "question": "How does the system handle retry logic when the Blacklist check to MTI fails during the CDD data submission process?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_13",
+      "positions_found": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "correct_chunks": 4,
+      "precision": 0.4,
+      "precision_at_3": 1.0,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - POST individual-onboarding/v1/cdd/data-submission",
+        "R4 - POST individual-onboarding/v1/cdd/data-submission"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What conditions trigger the '10020 - Error Surrounding' status code in the POST individual-onboarding/v1/checkpoint API?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_14",
+      "positions_found": [
+        3
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.3333,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - POST individual-onboarding/v1/checkpoint"
+      ],
+      "missing_docs": [
+        "R5 - POST individual-onboarding/v1/checkpoint"
+      ]
+    },
+    {
+      "question": "How is the NIK value updated in the RegisterOnboardingStage table during the checkpoint process?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_15",
+      "positions_found": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "correct_chunks": 5,
+      "precision": 0.5,
+      "precision_at_3": 1.0,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - POST individual-onboarding/v2/checkpoint",
+        "R4 - POST individual-onboarding/v1/checkpoint",
+        "R5 - POST individual-onboarding/v1/checkpoint"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What validation checks are performed on the `profileBusiness.businessName` field in the `POST /multioutlet/v2/register/submit` API, and where are the configuration values for these validations retrieved from?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_16",
+      "positions_found": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "correct_chunks": 5,
+      "precision": 0.5,
+      "precision_at_3": 1.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - Onboarding - POST multi-outlet/v1/register/submit",
+        "R5 - Onboarding - POST multi-outlet/v2/register/submit",
+        "R5 - POST company-onboarding/v2/register/submit",
+        "R5 - POST individual-onboarding/v2/register/submit"
+      ],
+      "missing_docs": [
+        "POST internal/system/v1/app-configs/app"
+      ]
+    },
+    {
+      "question": "How does the `POST /multioutlet/v2/register/submit` API determine if a business QRIS name is blacklisted, and which external API is invoked for this check?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_17",
+      "positions_found": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "correct_chunks": 4,
+      "precision": 0.4,
+      "precision_at_3": 0.6667,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - Onboarding - POST multi-outlet/v1/register/submit",
+        "R5 - Onboarding - POST multi-outlet/v2/register/submit"
+      ],
+      "missing_docs": [
+        "POST system/v1/blacklist/store-name"
+      ]
+    },
+    {
+      "question": "What is the purpose of the `checkPointId` field in the request payload for the POST company-onboarding/v1/register/preparation API, and why was it introduced as a replacement for `phoneNumber` and `email`?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_18",
+      "positions_found": [
+        2,
+        3
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.6667,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - POST individual-onboarding/v1/register/preparation",
+        "R5 - POST individual-onboarding/v1/register/preparation"
+      ],
+      "missing_docs": [
+        "R5 - POST company-onboarding/v1/register/preparation"
+      ]
+    },
+    {
+      "question": "How does the POST company-onboarding/v1/register/preparation API determine if a business name is blacklisted, and what specific field is sent to the external blacklist service?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_19",
+      "positions_found": [
+        2,
+        4,
+        5
+      ],
+      "correct_chunks": 3,
+      "precision": 0.3,
+      "precision_at_3": 0.3333,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "POST system/v1/blacklist/store-name",
+        "R4 - POST system/v1/blacklist/store-name",
+        "R5 - POST company-onboarding/v1/register/preparation"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What is the purpose of the `checkPointId` parameter in the POST /company-onboarding/v1/check-store request, and how is it used in the data flow?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_20",
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "precision_at_3": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "[UNUSED] R5 - POST company-onboarding/v1/check-store"
+      ]
+    },
+    {
+      "question": "How does the system determine the `businessType` and `isHighRisk` fields when processing the response from the MTI merchant inquiry?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_21",
+      "positions_found": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "correct_chunks": 5,
+      "precision": 0.5,
+      "precision_at_3": 1.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - POST individual-onboarding/v1/merchant/list",
+        "R4 - POST individual-onboarding/v1/merchant/list",
+        "R5 - POST individual-onboarding/v1/check-store",
+        "R4 - POST individual-onboarding/v1/check-store"
+      ],
+      "missing_docs": [
+        "[UNUSED] R5 - POST company-onboarding/v1/check-store",
+        "System - POST-system/v1/merchant-category/list"
+      ]
+    },
+    {
+      "question": "What is the purpose of calling the POST system/v1/casa-inquiry API in the company-onboarding/v2/register/execution flow, and what account statuses would cause the onboarding process to be rejected?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_22",
+      "positions_found": [
+        2,
+        3
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.6667,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - POST individual-onboarding/v1/register/execution",
+        "R4 - System - POST system/v1/casa-inquiry"
+      ],
+      "missing_docs": [
+        "CONNECTED DOCUMENT: System - POST system/v1/casa-inquiry",
+        "MAIN DOCUMENT: R5 - POST company-onboarding/v2/register/execution"
+      ]
+    },
+    {
+      "question": "How does the system handle loan write-off validation during merchant onboarding, and which specific field and value in the loan inquiry response triggers rejection of the registration?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_23",
+      "positions_found": [
+        1,
+        4
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.3333,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "POST company-onboarding/v1/register/execution",
+        "R4 - POST individual-onboarding/v1/register/execution"
+      ],
+      "missing_docs": [
+        "CONNECTED DOCUMENT: System - POST system/v1/LoanInquiry",
+        "MAIN DOCUMENT: R5 - POST company-onboarding/v2/register/execution"
+      ]
+    },
+    {
+      "question": "What validations are performed on the business name and email during the POST company-onboarding/v2/register/submit process, and where are the configuration values for these validations obtained?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_24",
+      "positions_found": [
+        1,
+        3,
+        5
+      ],
+      "correct_chunks": 3,
+      "precision": 0.3,
+      "precision_at_3": 0.6667,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - POST individual-onboarding/v2/register/submit",
+        "R5 - POST company-onboarding/v2/register/submit",
+        "R4 - POST company-onboarding/v1/register/submit"
+      ],
+      "missing_docs": [
+        "POST internal/system/v1/app-configs/app"
+      ]
+    },
+    {
+      "question": "How does the system determine if a store name is blacklisted during company onboarding, and what API is used for this check?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_25",
+      "positions_found": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "correct_chunks": 4,
+      "precision": 0.4,
+      "precision_at_3": 0.6667,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - POST company-onboarding/v2/register/submit",
+        "POST system/v1/blacklist/store-name",
+        "R4 - POST system/v1/blacklist/store-name",
+        "R4 - POST company-onboarding/v1/register/submit"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What HTTP status code and custom status code are returned by the POST individual-onboarding/v1/registration-info API if the OnboardingInfo database query returns no data?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_26",
+      "positions_found": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "correct_chunks": 4,
+      "precision": 0.4,
+      "precision_at_3": 1.0,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R4 - POST individual-onboarding/v1/registration-info",
+        "R5 - POST company-onboarding/v1/registration-info",
+        "R5 - POST individual-onboarding/v1/registration-info",
+        "R4 - POST company-onboarding/v1/registration-info"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What service code should be included in the request header when calling the GET internal/system/v1/check-downtime API from the individual-onboarding service?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_27",
+      "positions_found": [
+        1,
+        2,
+        4
+      ],
+      "correct_chunks": 3,
+      "precision": 0.3,
+      "precision_at_3": 0.6667,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - GET internal/system/v1/check-downtime",
+        "R5 - GET internal/system/v1/check-downtime",
+        "GET internal/system/v1/check-downtime"
+      ],
+      "missing_docs": [
+        "R5 - POST individual-onboarding/v1/registration-info"
+      ]
+    },
+    {
+      "question": "What are the conditions under which the POST individual-onboarding/v1/register/preparation endpoint returns a 400 Invalid Request response?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_28",
+      "positions_found": [
+        1,
+        2
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.6667,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R4 - POST individual-onboarding/v1/register/preparation",
+        "R5 - POST individual-onboarding/v1/register/preparation"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "How is the 'businessName' field used when calling the POST system/v1/blacklist/store-name API from the individual onboarding preparation flow?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_29",
+      "positions_found": [
+        1,
+        2,
+        4
+      ],
+      "correct_chunks": 3,
+      "precision": 0.3,
+      "precision_at_3": 0.6667,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "POST system/v1/blacklist/store-name",
+        "R4 - POST system/v1/blacklist/store-name",
+        "R5 - POST company-onboarding/v1/register/preparation"
+      ],
+      "missing_docs": [
+        "R5 - POST individual-onboarding/v1/register/preparation"
+      ]
+    },
+    {
+      "question": "What conditions cause the API POST individual-onboarding/v1/face-verification/validate to return a custom error code 10015, and what is the business logic behind it?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_30",
+      "positions_found": [
+        4
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - POST individual-onboarding/v1/face-verification/validate"
+      ],
+      "missing_docs": [
+        "POST internal/identification/v1/face-verification/validate"
+      ]
+    },
+    {
+      "question": "How is the `referenceId` field transformed when calling the internal API POST internal/identification/v1/face-verification/validate from the individual-onboarding service?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_31",
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "precision_at_3": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "R5 - POST individual-onboarding/v1/face-verification/validate"
+      ]
+    },
+    {
+      "question": "What is the condition under which the R5 checkpoint service will call the SearchContractMDM external API, and what field from the RegisterOnboardingStage table is used in the request payload?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_32",
+      "positions_found": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "correct_chunks": 5,
+      "precision": 0.5,
+      "precision_at_3": 1.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - POST individual-onboarding/v2/checkpoint",
+        "R4 - POST individual-onboarding/v1/checkpoint",
+        "R5 - POST individual-onboarding/v1/checkpoint"
+      ],
+      "missing_docs": [
+        "System - POST-system/v1/checkpoint/data"
+      ]
+    },
+    {
+      "question": "How does the system determine whether to update the NIK value in the RegisterOnboardingStage table during the R5 checkpoint process?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_33",
+      "positions_found": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "correct_chunks": 5,
+      "precision": 0.5,
+      "precision_at_3": 1.0,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - POST individual-onboarding/v2/checkpoint",
+        "R4 - POST individual-onboarding/v1/checkpoint",
+        "R5 - POST individual-onboarding/v1/checkpoint"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What is the purpose of the `POST system/v1/blacklist/store-name` API, and how is it used within the individual onboarding registration flow?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_34",
+      "positions_found": [
+        1,
+        2,
+        4,
+        5
+      ],
+      "correct_chunks": 4,
+      "precision": 0.4,
+      "precision_at_3": 0.6667,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - Onboarding - POST multi-outlet/v1/register/submit",
+        "POST system/v1/blacklist/store-name",
+        "R4 - POST system/v1/blacklist/store-name",
+        "R4 - POST company-onboarding/v1/register/submit"
+      ],
+      "missing_docs": [
+        "R5 - POST individual-onboarding/v1/register/submit"
+      ]
+    },
+    {
+      "question": "What are the conditions under which the `individual-onboarding/v1/register/submit` API returns HTTP 200 with status code 10083, and what fields are included in the response?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_35",
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "precision_at_3": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "R5 - POST individual-onboarding/v1/register/submit"
+      ]
+    },
+    {
+      "question": "What is the source and processing logic for the AccountNumber field in the GET-GetProfileOutletV2 API response?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_36",
+      "positions_found": [
+        1,
+        5
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.3333,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5b - WebAPI - GET-GetProfileOutletV2",
+        "R5 - WebAPI - GET-GetProfileOutletV2"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "How is the OutletLevel determined in the GET-GetProfileOutletV2 API based on the primary outlet's level and branch level?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_37",
+      "positions_found": [
+        4
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.0,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - WebAPI - GET-GetProfileOutletV2"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What validation checks are performed on the NewPassword field before it is accepted in the POST /data/iSellerData/v2/UpdatePassword API?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_38",
+      "positions_found": [
+        1,
+        3
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.6667,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - WebAPI - POST-/data/iSellerData/v2/UpdatePassword",
+        "R5 - WebApp - PUT Identity/UpdatePassword"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What is the purpose of calling the POST internal/system/v1/app-configs/app API in the UpdatePassword flow, and which configuration parameters are retrieved?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_39",
+      "positions_found": [
+        1,
+        2,
+        4
+      ],
+      "correct_chunks": 3,
+      "precision": 0.3,
+      "precision_at_3": 0.6667,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - WebAPI - POST-/data/iSellerData/v2/UpdatePassword",
+        "POST internal/system/v1/app-configs/app",
+        "R4 - POST internal/system/v1/app-configs/app"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What is the Kafka topic name that the Loyalty User Validation Event Consumer consumes events from?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_40",
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "precision_at_3": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "R5 - MS Loyalty User Validation Event Consumer"
+      ]
+    },
+    {
+      "question": "Which internal merchant API endpoint is used to retrieve a list of outlets, and what is its purpose?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_41",
+      "positions_found": [
+        3
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.3333,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "POST internal/merchant/v1/outlet-list"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What validation rules are applied to the 'amount' field in the POST bansos/v1/withdrawal/preparation request, and what error codes are returned if these validations fail?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_42",
+      "positions_found": [
+        1,
+        2,
+        3
+      ],
+      "correct_chunks": 3,
+      "precision": 0.3,
+      "precision_at_3": 1.0,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - POST bansos/v1/withdrawal/preparation",
+        "R4 - POST bansos/v1/withdrawal/preparation",
+        "POST bansos/v1/withdrawal/preparation"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "How is the merchantName determined in the POST bansos/v1/withdrawal/preparation flow, and which APIs are involved in retrieving this data?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_43",
+      "positions_found": [
+        2,
+        4
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.3333,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - POST bansos/v1/withdrawal/preparation",
+        "POST bansos/v1/withdrawal/preparation"
+      ],
+      "missing_docs": [
+        "POST internal/profile-migration/v1/outlet-data"
+      ]
+    },
+    {
+      "question": "What is the purpose of the API POST internal/profile-migration/v1/lending/hold-amount, and which microservice manages it?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_44",
+      "positions_found": [
+        1,
+        2,
+        3
+      ],
+      "correct_chunks": 3,
+      "precision": 0.3,
+      "precision_at_3": 1.0,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "POST internal/profile-migration/v1/lending/hold-amount",
+        "R4 - POST internal/profile-migration/v1/lending/hold-amount",
+        "POST internal/lending/v1/hold-amount"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "In the sequence diagram for POST ordering-ecohub/v2/order/execution, what error code is returned if the call to partnership-h2h/api/post/stores/v1/details times out, and in which enhancement was this implemented?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_45",
+      "positions_found": [
+        2,
+        3
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.6667,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - POST ordering-ecohub/v2/order/execution"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "Under what conditions is the MerchantLoyalty field included in the response of the GET Identity.GetUserProfileV2 API?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_46",
+      "positions_found": [
+        2
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.3333,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - WebAPI - GET-Identity.GetUserProfileV2"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What is the purpose of the GET internal/system/v1/check-downtime API and how is it used in the GetUserProfileV2 flow?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_47",
+      "positions_found": [
+        1,
+        2,
+        4
+      ],
+      "correct_chunks": 3,
+      "precision": 0.3,
+      "precision_at_3": 0.6667,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - GET internal/system/v1/check-downtime",
+        "R5 - GET internal/system/v1/check-downtime",
+        "R5 - WebAPI - GET-Identity.GetUserProfileV2"
+      ],
+      "missing_docs": [
+        "GET internal/system/v1/check-downtime"
+      ]
+    },
+    {
+      "question": "What is the purpose of the '/v2.0/mandiriLivin/merchantRegisterV3' endpoint in the R5 onboarding flow, and under what response conditions is the registration process considered failed?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_48",
+      "positions_found": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "correct_chunks": 4,
+      "precision": 0.4,
+      "precision_at_3": 1.0,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - POST individual-onboarding/v2/register/execution",
+        "R4 - POST individual-onboarding/v1/register/execution"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What happens during the Loan Inquiry process in the onboarding flow, and how is a write-off status determined?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_49",
+      "positions_found": [
+        3,
+        6
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.3333,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "System - POST system/v1/LoanInquiry",
+        "R4 - POST individual-onboarding/v1/register/execution"
+      ],
+      "missing_docs": [
+        "R5 - POST individual-onboarding/v2/register/execution"
+      ]
+    },
+    {
+      "question": "What is the logic for determining the source of outletIds when calling POST merchant/v1/outlet-list in the context of the loyalty whitelist check flow?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_50",
+      "positions_found": [
+        1
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.3333,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - POST loyalty/v1/binding/whitelist-check"
+      ],
+      "missing_docs": [
+        "POST merchant/v1/outlet-list"
+      ]
+    },
+    {
+      "question": "How is the 'position' field calculated in the response of POST loyalty/v1/binding/whitelist-check based on pagination and configuration?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_51",
+      "positions_found": [
+        1,
+        3
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.6667,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - POST loyalty/v1/binding/whitelist-check"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What validation checks are performed on the businessQRISName field during the POST individual-onboarding/v2/register/submit process, and what happens if it fails?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_52",
+      "positions_found": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "correct_chunks": 5,
+      "precision": 0.5,
+      "precision_at_3": 1.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - POST company-onboarding/v2/register/submit",
+        "R5 - POST individual-onboarding/v2/register/submit",
+        "R5 - Onboarding - POST multi-outlet/v2/register/submit"
+      ],
+      "missing_docs": [
+        "POST system/v1/blacklist/store-name"
+      ]
+    },
+    {
+      "question": "How does the system validate the email and phone number format during merchant onboarding, and where are the regex patterns sourced from?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_53",
+      "positions_found": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "correct_chunks": 5,
+      "precision": 0.5,
+      "precision_at_3": 1.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "POST company-onboarding/v1/register/submit",
+        "R5 - POST individual-onboarding/v2/register/submit",
+        "R5 - POST company-onboarding/v2/register/submit"
+      ],
+      "missing_docs": [
+        "POST internal/system/v1/app-configs/app"
+      ]
+    },
+    {
+      "question": "Which microservice handles the real-time settlement callback for the payout process in the Merchant Loyalty Binding feature?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_54",
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "precision_at_3": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "R5 - Merchant Loyalty Binding"
+      ]
+    },
+    {
+      "question": "What new database tables were introduced in the R4 release to support the settlement process for pending and temporary payout data?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_55",
+      "positions_found": [
+        1
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.3333,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - Merchant Loyalty Binding"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What is the purpose of the POST internal/v1/merchant-tenant/check API, and what consumer component uses it in the sequence diagram?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_56",
+      "positions_found": [
+        1,
+        2,
+        3
+      ],
+      "correct_chunks": 3,
+      "precision": 0.3,
+      "precision_at_3": 1.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - POST internal/v1/merchant-tenant/check",
+        "POST backoffice/v1/merchant-tenant/check",
+        "R4 - POST backoffice/v1/merchant-tenant/check"
+      ],
+      "missing_docs": [
+        "POST internal/v1/merchant-tenant/check",
+        "R5 - MS Profile Migration Settlement Payout Event Consumer"
+      ]
+    },
+    {
+      "question": "Under what condition does the Profile Migration Consumer publish an event to the MS Loyalty Kafka topic, and what JIRA issues are associated with this logic?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_57",
+      "positions_found": [
+        1,
+        4
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.3333,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - MS Profile Migration Settlement Payout Event Consumer"
+      ],
+      "missing_docs": [
+        "GET internal/system/v1/check-downtime"
+      ]
+    },
+    {
+      "question": "What is the purpose of the `totalWhitelistKUMTP` field in the request body when calling the `/v1/system/approveTnc` API, and how is its value determined?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_58",
+      "positions_found": [
+        1
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.3333,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - POST terms-and-conditions/v1/approve"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "Under what conditions does the MS TnC Service return an HTTP 409 status code with custom error code '30199' during the POST /terms-and-conditions/v1/approve flow?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_59",
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "precision_at_3": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "R5 - POST terms-and-conditions/v1/approve"
+      ]
+    },
+    {
+      "question": "What conditions must be met for the `slaDueDate` field to be included in the response of the `POST ordering-ecohub/v1/order/tracking/detail` API?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_60",
+      "positions_found": [
+        1,
+        4
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.3333,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R4 - POST ordering-ecohub/v1/order/tracking/detail",
+        "R5 - POST ordering-ecohub/v1/order/tracking/detail"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "Which internal API is called to retrieve user information for setting the `doneBy` field when the order status is 'DONE' and the order was not created by a callback?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_61",
+      "positions_found": [
+        3,
+        4
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.3333,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R5 - POST ordering-ecohub/v1/order/tracking/detail"
+      ],
+      "missing_docs": [
+        "POST internal/system-migration/v1/merchant-users"
+      ]
+    },
+    {
+      "question": "What is the Kafka topic used by the MS Loyalty Customer PAN Consumer to receive customer PAN data in the Loyalty Engine microservice?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_62",
+      "positions_found": [
+        1
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.3333,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "MS Loyalty Customer PAN Consumer"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "Which tables are used to store outlet whitelist data in the Merchant Loyalty Engine, and what is the purpose of having two separate tables (outlet_whitelist_a and outlet_whitelist_b)?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_63",
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "precision_at_3": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "R5 - Loyalty Engine"
+      ]
+    },
+    {
+      "question": "What is the purpose of the POST ordering-ecohub/v1/cart/apply-order API, and which user role is authorized to use it according to the scope type?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_64",
+      "positions_found": [
+        2
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.3333,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "R4 - POST ordering-ecohub/v1/cart/apply-order"
+      ],
+      "missing_docs": [
+        "POST ordering-ecohub/v1/cart/apply-order"
+      ]
+    },
+    {
+      "question": "Which API endpoint is responsible for retrieving the list of best-selling products in the EcoHub system, and what user roles can access it based on scope type?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_65",
+      "positions_found": [
+        1
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.3333,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "POST ordering-ecohub/v1/product/best-seller"
+      ],
+      "missing_docs": []
+    },
+    {
+      "question": "What is the purpose of the `screen` field in the request body of the POST /tnc/v1/content endpoint, and how is it used in downstream API calls?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 2,
+      "question_id": "question_66",
+      "positions_found": [
+        1,
+        3
+      ],
+      "correct_chunks": 2,
+      "precision": 0.2,
+      "precision_at_3": 0.6667,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [
+        "POST terms-and-conditions/v1/content",
+        "R5 - POST terms-and-conditions/v1/content"
+      ],
+      "missing_docs": [
+        "System - POST-/v1/system/tncsLatest"
+      ]
+    },
+    {
+      "question": "Under what conditions does the POST /tnc/v1/content endpoint return an HTTP 409 status code with custom error code '30135', and what does this error signify?",
+      "test_type": "unknown",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "question_id": "question_67",
+      "positions_found": [
+        4
+      ],
+      "correct_chunks": 1,
+      "precision": 0.1,
+      "precision_at_3": 0.0,
+      "all_docs_found": true,
+      "retrieved_expected_docs": [
+        "R5 - POST terms-and-conditions/v1/content"
+      ],
+      "missing_docs": []
+    }
+  ]
+}

@@ -122,6 +122,35 @@ class StreamlitDashboard:
     def render(self):
         st.set_page_config(page_title="RAG Evaluation Dashboard", layout="wide")
         
+        # Custom CSS for better expander display and formula wrapping
+        st.markdown("""
+        <style>
+        /* Make expander content area wider and scrollable */
+        .streamlit-expanderContent {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        
+        /* Better spacing for expander content */
+        div[data-testid="stExpander"] {
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            margin-top: 8px;
+        }
+        
+        /* Improve formula display */
+        .stMarkdown p {
+            overflow-x: auto;
+            max-width: 100%;
+        }
+        
+        /* Make metrics more compact */
+        div[data-testid="stMetricValue"] {
+            font-size: 24px;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+        
         # Header
         st.title("📊 RAG Retrieval Evaluation Dashboard")
         st.markdown("---")
@@ -139,152 +168,127 @@ class StreamlitDashboard:
         
         with col1:
             st.metric("Overall Success Rate", f"{overall.get('success_rate', 0)*100:.1f}%")
-            with st.expander("ℹ️ What is Overall Success Rate?"):
-                st.write("""
-                **Overall Success Rate** adalah persentase dari total pertanyaan yang berhasil menemukan 
-                dokumen yang diharapkan dalam hasil retrieval.
-                
-                **Formula:** (Jumlah pertanyaan berhasil / Total pertanyaan) × 100%
-                
-                **Interpretasi:**
-                - **>80%**: Sangat baik - sistem retrieval sangat akurat
-                - **60-80%**: Baik - performa memadai dengan ruang untuk perbaikan
-                - **<60%**: Perlu perbaikan - banyak dokumen relevan tidak ditemukan
-                """)
+            with st.expander("ℹ️ Info"):
+                st.write("**Overall Success Rate**")
+                st.write("Percentage of questions that successfully found the expected documents.")
+                st.write("")
+                st.latex(r"\text{Success Rate} = \frac{\text{Successful Questions}}{\text{Total Questions}} \times 100\%")
+                st.write("")
+                st.write("**Interpretation:**")
+                st.write("- **>80%**: Excellent")
+                st.write("- **60-80%**: Good")
+                st.write("- **<60%**: Needs improvement")
             
             st.metric("Context Recall", f"{self.context_recall():.1f}%")
-            with st.expander("ℹ️ What is Context Recall?"):
-                st.write("""
-                **Context Recall** mengukur persentase dokumen yang diharapkan yang berhasil 
-                di-retrieve dari semua dokumen yang seharusnya ditemukan.
-                
-                **Formula:** (Total dokumen relevan yang ditemukan / Total dokumen relevan yang diharapkan) × 100%
-                
-                **Interpretasi:**
-                - **>90%**: Excellent - hampir semua dokumen relevan ditemukan
-                - **70-90%**: Good - sebagian besar dokumen relevan ditemukan
-                - **<70%**: Poor - banyak dokumen relevan yang terlewat
-                """)
+            with st.expander("ℹ️ Info"):
+                st.write("**Context Recall**")
+                st.write("Percentage of relevant documents successfully found out of the total that should have been retrieved.")
+                st.write("")
+                st.latex(r"\text{Recall} = \frac{\text{Relevant Docs Found}}{\text{Total Relevant Docs}} \times 100\%")
+                st.write("")
+                st.write("**Interpretation:**")
+                st.write("- **>90%**: Excellent")
+                st.write("- **70-90%**: Good")
+                st.write("- **<70%**: Poor")
         
         with col2:
             st.metric("Average Precision", f"{overall.get('average_precision', 0)*100:.1f}%")
-            with st.expander("ℹ️ What is Average Precision?"):
-                st.write("""
-                **Average Precision** mengukur seberapa akurat sistem dalam mengambil dokumen yang benar 
-                dari semua dokumen yang di-retrieve.
-                
-                **Formula:** (Jumlah dokumen benar yang di-retrieve / Total dokumen yang di-retrieve) × 100%
-                
-                **Interpretasi:**
-                - **>80%**: Sangat presisi - sedikit noise dalam hasil
-                - **60-80%**: Cukup presisi - ada beberapa dokumen tidak relevan
-                - **<60%**: Kurang presisi - banyak dokumen tidak relevan dalam hasil
-                """)
+            with st.expander("ℹ️ Info"):
+                st.write("**Average Precision**")
+                st.write("Measures the system's accuracy in retrieving correct documents.")
+                st.write("")
+                st.latex(r"\text{Precision} = \frac{\text{Correct Docs}}{\text{Total Docs Retrieved}} \times 100\%")
+                st.write("")
+                st.write("**Interpretation:**")
+                st.write("- **>80%**: High precision")
+                st.write("- **60-80%**: Fair precision")
+                st.write("- **<60%**: Low precision")
             
             mrr_val = self.mean_reciprocal_rank()
             avg_rank = self.average_first_rank()
             with_relevant = self.questions_with_relevant_docs()
-            st.metric(
-                "MRR", 
-                f"{mrr_val*100:.1f}%",
-                delta=f"Avg rank: {avg_rank:.1f} | Found: {with_relevant[0]}/{with_relevant[1]}",
-                delta_color="off"
-            )
-            with st.expander("ℹ️ What is MRR?"):
-                st.write("""
-                **Mean Reciprocal Rank (MRR)** mengukur seberapa cepat sistem menemukan 
-                dokumen yang benar pertama kali.
-                
-                **Formula:** Average(1 / posisi dokumen relevan pertama)
-                
-                **Contoh:**
-                - Jika dokumen relevan di posisi 1: MRR = 1/1 = 1.0 (100%)
-                - Jika dokumen relevan di posisi 2: MRR = 1/2 = 0.5 (50%)
-                - Jika dokumen relevan di posisi 5: MRR = 1/5 = 0.2 (20%)
-                
-                **Interpretasi:**
-                - **>80%**: Excellent - dokumen relevan biasanya di top 1-2
-                - **50-80%**: Good - dokumen relevan di top 3-5
-                - **<50%**: Poor - dokumen relevan terlalu jauh di bawah
-                
-                **Avg rank** menunjukkan posisi rata-rata dokumen relevan pertama ditemukan.
-                """)
+            st.metric("MRR", f"{mrr_val*100:.1f}%")
+            with st.expander("ℹ️ Info"):
+                st.write("**Mean Reciprocal Rank (MRR)**")
+                st.write("Measures how quickly the system finds the first correct document.")
+                st.write("")
+                st.latex(r"\text{MRR} = \frac{1}{N} \sum_{i=1}^{N} \frac{1}{\text{rank}_i}")
+                st.write("")
+                st.write(f"**Average Rank:** {avg_rank:.1f}")
+                st.write(f"**Questions with Relevant Docs:** {with_relevant[0]}/{with_relevant[1]}")
+                st.write("")
+                st.write("**Interpretation:**")
+                st.write("- **>80%**: Excellent (docs usually in top 1-2)")
+                st.write("- **50-80%**: Good (docs in top 3-5)")
+                st.write("- **<50%**: Poor (docs ranked too low)")
         
         with col3:
             st.metric("Precision@3", f"{overall.get('precision_at_3', 0)*100:.1f}%")
-            with st.expander("ℹ️ What is Precision@3?"):
-                st.write("""
-                **Precision@3** mengukur persentase pertanyaan yang berhasil menemukan 
-                setidaknya satu dokumen yang benar dalam 3 hasil teratas.
-                
-                **Formula:** (Pertanyaan dengan dokumen benar di top-3 / Total pertanyaan) × 100%
-                
-                **Interpretasi:**
-                - **>90%**: Excellent - hampir semua jawaban ada di top-3
-                - **70-90%**: Good - sebagian besar jawaban di top-3
-                - **<70%**: Poor - banyak jawaban tidak muncul di top-3
-                
-                **Kenapa penting?** User biasanya hanya melihat 3 hasil teratas.
-                """)
+            with st.expander("ℹ️ Info"):
+                st.write("**Precision@3**")
+                st.write("Percentage of questions that find at least 1 correct document in the top 3 results.")
+                st.write("")
+                st.latex(r"\text{P@3} = \frac{\text{Questions with doc in top-3}}{\text{Total Questions}} \times 100\%")
+                st.write("")
+                st.write("**Interpretation:**")
+                st.write("- **>90%**: Excellent")
+                st.write("- **70-90%**: Good")
+                st.write("- **<70%**: Poor")
+                st.write("")
+                st.write("**Why it matters?** Users typically only focus on the top 3 results.")
             
             st.metric("No-Doc Detection", f"{no_doc.get('correct_rejection_rate', 0)*100:.1f}%")
-            with st.expander("ℹ️ What is No-Doc Detection?"):
-                st.write("""
-                **No-Doc Detection** mengukur kemampuan sistem untuk mengenali pertanyaan 
-                yang tidak bisa dijawab dari dokumen yang tersedia.
-                
-                **Formula:** (Pertanyaan tidak relevan yang benar ditolak / Total pertanyaan tidak relevan) × 100%
-                
-                **Interpretasi:**
-                - **>90%**: Excellent - sangat baik mendeteksi pertanyaan di luar konteks
-                - **70-90%**: Good - cukup baik menghindari jawaban yang salah
-                - **<70%**: Poor - sering memberikan jawaban untuk pertanyaan yang tidak relevan
-                
-                **Kenapa penting?** Mencegah sistem memberikan jawaban yang salah atau tidak relevan.
-                """)
+            with st.expander("ℹ️ Info"):
+                st.write("**No-Doc Detection**")
+                st.write("The system's ability to recognize questions that cannot be answered from available documents.")
+                st.write("")
+                st.latex(r"\text{Rejection Rate} = \frac{\text{Correctly Rejected}}{\text{Total Irrelevant}} \times 100\%")
+                st.write("")
+                st.write("**Interpretation:**")
+                st.write("- **>90%**: Excellent")
+                st.write("- **70-90%**: Good")
+                st.write("- **<70%**: Poor")
+                st.write("")
+                st.write("**Why it matters?** Prevents the system from giving irrelevant or incorrect answers.")
         
         with col4:
             st.metric("NDCG", f"{self._mean_ndcg()*100:.1f}%")
-            with st.expander("ℹ️ What is NDCG?"):
-                st.write("""
-                **Normalized Discounted Cumulative Gain (NDCG)** mengukur kualitas ranking 
-                dengan mempertimbangkan posisi dan relevansi dokumen.
-                
-                **Formula:** DCG / IDCG
-                - **DCG**: Skor kumulatif dengan penalty untuk posisi lebih rendah
-                - **IDCG**: Skor ideal (semua dokumen relevan di posisi teratas)
-                
-                **Cara kerja:**
-                - Dokumen relevan di posisi 1 mendapat skor penuh
-                - Dokumen relevan di posisi 2-3 mendapat skor dikurangi
-                - Dokumen relevan di posisi 4+ mendapat skor lebih kecil lagi
-                
-                **Interpretasi:**
-                - **>80%**: Excellent - ranking sangat optimal
-                - **60-80%**: Good - ranking cukup baik
-                - **<60%**: Poor - dokumen relevan terlalu tersebar
-                
-                **Kenapa penting?** Tidak cukup hanya menemukan dokumen yang benar, 
-                tetapi harus di posisi yang tepat (semakin atas semakin baik).
-                """)
+            with st.expander("ℹ️ Info"):
+                st.write("**Normalized Discounted Cumulative Gain (NDCG)**")
+                st.write("Measures ranking quality by considering both document position and relevance.")
+                st.write("")
+                st.latex(r"\text{NDCG} = \frac{\text{DCG}}{\text{IDCG}}")
+                st.write("")
+                st.write("- **DCG**: Score with penalty for lower positions")
+                st.write("- **IDCG**: Ideal score (all relevant docs at the top)")
+                st.write("")
+                st.write("**How it works:**")
+                st.write("- Document at rank 1 gets full score")
+                st.write("- Documents at ranks 2-3 get reduced scores")
+                st.write("- Documents at ranks 4+ get significantly lower scores")
+                st.write("")
+                st.write("**Interpretation:**")
+                st.write("- **>80%**: Excellent ranking")
+                st.write("- **60-80%**: Good ranking")
+                st.write("- **<60%**: Poor ranking")
         
         st.markdown("---")
         
         # Performance by test type
-        st.subheader("Performance by Test Type")
+        st.subheader("Performance by Test Scenario")
         test_types = ['single_doc', 'multi_doc', 'conflicting_docs', 'long_queries']
         
         df_performance = pd.DataFrame([
             {
                 'Test Type': t.replace('_', ' ').title(),
-                'Success Rate': self.metrics.get(t, {}).get('success_rate', 0) * 100,
-                'Avg Precision': self.metrics.get(t, {}).get('average_precision', 0) * 100
+                'Success Rate (%)': self.metrics.get(t, {}).get('success_rate', 0) * 100,
+                'Avg Precision (%)': self.metrics.get(t, {}).get('average_precision', 0) * 100
             }
             for t in test_types
         ])
         
-        fig = px.bar(df_performance, x='Test Type', y=['Success Rate', 'Avg Precision'],
-                     barmode='group', title="Performance Comparison")
+        fig = px.bar(df_performance, x='Test Type', y=['Success Rate (%)', 'Avg Precision (%)'],
+                     barmode='group', title="Performance Comparison across Scenarios")
         st.plotly_chart(fig, use_container_width=True)
         
         # Position distribution
@@ -309,30 +313,34 @@ class StreamlitDashboard:
         # Detailed metrics table
         st.subheader("Detailed Performance Metrics")
         df_metrics = self._create_metrics_table()
-        st.dataframe(df_metrics, use_container_width=True)
+        styled_df = self._style_metrics_table(df_metrics)
+        st.dataframe(styled_df, use_container_width=True)
         
         # Hierarchical metrics
         st.subheader("Hierarchical Metrics")
         tab1, tab2, tab3 = st.tabs(["By Project", "By Activity", "By Doc Type"])
-        
+
         with tab1:
             df_project = self._create_hierarchical_df('by_project')
             if not df_project.empty:
-                st.dataframe(df_project, use_container_width=True)
+                styled_project = self._style_hierarchical_table(df_project)
+                st.dataframe(styled_project, use_container_width=True)
             else:
                 st.info("No project-level metrics available")
-        
+
         with tab2:
             df_activity = self._create_hierarchical_df('by_activity')
             if not df_activity.empty:
-                st.dataframe(df_activity, use_container_width=True)
+                styled_activity = self._style_hierarchical_table(df_activity)
+                st.dataframe(styled_activity, use_container_width=True)
             else:
                 st.info("No activity-level metrics available")
-        
+
         with tab3:
             df_doc_type = self._create_hierarchical_df('by_doc_type')
             if not df_doc_type.empty:
-                st.dataframe(df_doc_type, use_container_width=True)
+                styled_doc_type = self._style_hierarchical_table(df_doc_type)
+                st.dataframe(styled_doc_type, use_container_width=True)
             else:
                 st.info("No doc-type-level metrics available")
 
@@ -343,8 +351,23 @@ class StreamlitDashboard:
         positions = list(range(1, k + 1))
         counts = [position_dist.get(str(pos), 0) for pos in positions]
         
-        fig = go.Figure(data=[go.Bar(x=positions, y=counts)])
-        fig.update_layout(title=title, xaxis_title="Position", yaxis_title="Count")
+        # Find the maximum count and create color list
+        max_count = max(counts) if counts else 0
+        colors = ['#0B2D72' if count == max_count and count > 0 else '#7AB2B2' for count in counts]
+        
+        fig = go.Figure(data=[go.Bar(
+            x=positions, 
+            y=counts,
+            marker_color=colors,
+            text=counts,
+            textposition='auto',
+        )])
+        fig.update_layout(
+            title=title, 
+            xaxis_title="Rank Position", 
+            yaxis_title="Number of Queries",
+            showlegend=False
+        )
         return fig
 
     def _create_metrics_table(self) -> pd.DataFrame:
@@ -364,13 +387,60 @@ class StreamlitDashboard:
             m = self.metrics[test_type]
             data.append({
                 'Test Scenario': label,
-                'Questions': m.get('total_questions', 0),
-                'Success Rate (%)': f"{m.get('success_rate', 0)*100:.1f}",
-                'Avg Precision (%)': f"{m.get('average_precision', 0)*100:.1f}",
-                'Precision@3 (%)': f"{m.get('precision_at_3', 0)*100:.1f}"
+                'Total Questions': m.get('total_questions', 0),
+                'Success Rate (%)': m.get('success_rate', 0) * 100,
+                'Avg Precision (%)': m.get('average_precision', 0) * 100,
+                'Precision@3 (%)': m.get('precision_at_3', 0) * 100
             })
         
         return pd.DataFrame(data)
+
+    def _style_metrics_table(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Apply styling to highlight maximum and minimum values"""
+        if df.empty:
+            return df
+        
+        # Find max and min values for each metric column
+        max_success = df['Success Rate (%)'].max()
+        min_success = df['Success Rate (%)'].min()
+        max_precision = df['Avg Precision (%)'].max()
+        min_precision = df['Avg Precision (%)'].min()
+        max_precision_3 = df['Precision@3 (%)'].max()
+        min_precision_3 = df['Precision@3 (%)'].min()
+        
+        # Apply styling function
+        def highlight_max_min(row):
+            styles = [''] * len(row)
+            
+            # Success Rate
+            if row['Success Rate (%)'] == max_success:
+                styles[2] = 'color: #A5C89E; font-weight: bold'
+            elif row['Success Rate (%)'] == min_success:
+                styles[2] = 'color: #C40C0C; font-weight: bold'
+            
+            # Avg Precision
+            if row['Avg Precision (%)'] == max_precision:
+                styles[3] = 'color: #A5C89E; font-weight: bold'
+            elif row['Avg Precision (%)'] == min_precision:
+                styles[3] = 'color: #C40C0C; font-weight: bold'
+            
+            # Precision@3
+            if row['Precision@3 (%)'] == max_precision_3:
+                styles[4] = 'color: #A5C89E; font-weight: bold'
+            elif row['Precision@3 (%)'] == min_precision_3:
+                styles[4] = 'color: #C40C0C; font-weight: bold'
+            
+            return styles
+        
+        # Format numbers
+        styled = df.style.apply(highlight_max_min, axis=1)
+        styled = styled.format({
+            'Success Rate (%)': '{:.1f}',
+            'Avg Precision (%)': '{:.1f}',
+            'Precision@3 (%)': '{:.1f}'
+        })
+        
+        return styled
 
     def _create_hierarchical_df(self, hierarchy_type: str) -> pd.DataFrame:
         data = self.hierarchical.get(hierarchy_type, {})
@@ -381,12 +451,50 @@ class StreamlitDashboard:
         for key, metrics in data.items():
             rows.append({
                 'Category': key,
-                'Questions': metrics.get('total_questions', 0),
-                'Success Rate (%)': f"{metrics.get('success_rate', 0)*100:.1f}",
-                'Avg Precision (%)': f"{metrics.get('average_precision', 0)*100:.1f}"
+                'Total Questions': metrics.get('total_questions', 0),
+                'Success Rate (%)': metrics.get('success_rate', 0) * 100,
+                'Avg Precision (%)': metrics.get('average_precision', 0) * 100
             })
         
         return pd.DataFrame(rows)
+
+    def _style_hierarchical_table(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Apply styling to highlight maximum and minimum values in hierarchical tables"""
+        if df.empty:
+            return df
+        
+        # Find max and min values for each metric column
+        max_success = df['Success Rate (%)'].max()
+        min_success = df['Success Rate (%)'].min()
+        max_precision = df['Avg Precision (%)'].max()
+        min_precision = df['Avg Precision (%)'].min()
+        
+        # Apply styling function
+        def highlight_max_min(row):
+            styles = [''] * len(row)
+            
+            # Success Rate
+            if row['Success Rate (%)'] == max_success:
+                styles[2] = 'color: #A5C89E; font-weight: bold'
+            elif row['Success Rate (%)'] == min_success:
+                styles[2] = 'color: #C40C0C; font-weight: bold'
+            
+            # Avg Precision
+            if row['Avg Precision (%)'] == max_precision:
+                styles[3] = 'color: #A5C89E; font-weight: bold'
+            elif row['Avg Precision (%)'] == min_precision:
+                styles[3] = 'color: #C40C0C; font-weight: bold'
+            
+            return styles
+        
+        # Format numbers
+        styled = df.style.apply(highlight_max_min, axis=1)
+        styled = styled.format({
+            'Success Rate (%)': '{:.1f}',
+            'Avg Precision (%)': '{:.1f}'
+        })
+        
+        return styled
 
 
 def load_default_results():
@@ -415,28 +523,217 @@ def load_default_results():
     
     return None
 
+class ConfluenceDashboard:
+    """Special Dashboard for Confluence - LM"""
+    
+    def __init__(self, evaluation_results: Dict[str, Any]):
+        self.results = evaluation_results
+        self.summary = evaluation_results.get('summary', {})
+        self.total_questions = evaluation_results.get('total_questions', 0)
+        self.detailed = evaluation_results.get('detailed_results', [])
+    
+    def _get_position_distribution(self) -> Dict[int, int]:
+        """Calculate the distribution of positions for correct chunks found"""
+        position_counts = {}
+        
+        for item in self.detailed:
+            positions_found = item.get('positions_found', [])
+            for pos in positions_found:
+                position_counts[pos] = position_counts.get(pos, 0) + 1
+        
+        return position_counts
+
+    def render(self):
+        st.set_page_config(page_title="Confluence Evaluation Dashboard", layout="wide")
+        
+        # Custom CSS for better expander display
+        st.markdown("""
+        <style>
+        .streamlit-expanderContent {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        div[data-testid="stExpander"] {
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            margin-top: 8px;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+        
+        # Header
+        st.title("📊 Confluence - LM Evaluation Dashboard")
+        st.markdown("---")
+        
+        # Total questions
+        st.metric("Total Questions", self.total_questions)
+        st.markdown("---")
+        
+        # 4 Summary metrics only
+        col1, col2, col3, col4 = st.columns(4)
+        
+        with col1:
+            st.metric("Success Rate", f"{self.summary.get('success_rate', 0):.2f}%")
+            with st.expander("ℹ️ Info"):
+                st.write("**Success Rate**")
+                st.write("Percentage of questions that successfully found the expected documents.")
+                st.write("")
+                st.latex(r"\text{Success Rate} = \frac{\text{Successful Questions}}{\text{Total Questions}} \times 100\%")
+                st.write("")
+                st.write("**Interpretation:**")
+                st.write("- **>80%**: Excellent")
+                st.write("- **60-80%**: Good")
+                st.write("- **<60%**: Needs improvement")
+        
+        with col2:
+            st.metric("Average Precision", f"{self.summary.get('avg_precision', 0):.2f}%")
+            with st.expander("ℹ️ Info"):
+                st.write("**Average Precision**")
+                st.write("Measures the system's accuracy in retrieving correct documents.")
+                st.write("")
+                st.latex(r"\text{Precision} = \frac{\text{Correct Docs}}{\text{Total Docs Retrieved}} \times 100\%")
+                st.write("")
+                st.write("**Interpretation:**")
+                st.write("- **>80%**: High precision")
+                st.write("- **60-80%**: Fair precision")
+                st.write("- **<60%**: Low precision")
+        
+        with col3:
+            st.metric("Precision@3", f"{self.summary.get('avg_precision_at_3', 0):.2f}%")
+            with st.expander("ℹ️ Info"):
+                st.write("**Precision@3**")
+                st.write("Percentage of questions that find at least 1 correct document in the top 3 results.")
+                st.write("")
+                st.latex(r"\text{P@3} = \frac{\text{Questions with doc in top-3}}{\text{Total Questions}} \times 100\%")
+                st.write("")
+                st.write("**Why it matters?** Users typically only focus on the top 3 results.")
+        
+        with col4:
+            # Convert MRR to percentage if it's in decimal format (0-1 range)
+            mrr_value = self.summary.get('mrr', 0)
+            if mrr_value <= 1.0:
+                mrr_display = f"{mrr_value * 100:.2f}%"
+            else:
+                mrr_display = f"{mrr_value:.2f}%"
+            
+            st.metric("MRR", mrr_display)
+            with st.expander("ℹ️ Info"):
+                st.write("**Mean Reciprocal Rank (MRR)**")
+                st.write("Measures how quickly the system finds the first correct document.")
+                st.write("")
+                st.latex(r"\text{MRR} = \frac{1}{N} \sum_{i=1}^{N} \frac{1}{\text{rank}_i}")
+                st.write("")
+                st.write("**Interpretation:**")
+                st.write("- **>80%**: Excellent")
+                st.write("- **50-80%**: Good")
+                st.write("- **<50%**: Poor")
+        
+        st.markdown("---")
+        
+        # Position Distribution Chart
+        st.subheader("Position Distribution of Correct Chunks")
+        
+        position_dist = self._get_position_distribution()
+        if position_dist:
+            positions = sorted(position_dist.keys())
+            counts = [position_dist[pos] for pos in positions]
+            
+            # Find the maximum count and create color list
+            max_count = max(counts) if counts else 0
+            colors = ['#0B2D72' if count == max_count and count > 0 else '#7AB2B2' for count in counts]
+            
+            fig = go.Figure(data=[go.Bar(
+                x=positions, 
+                y=counts,
+                marker_color=colors,
+                text=counts,
+                textposition='auto',
+            )])
+            fig.update_layout(
+                title="Distribution of Positions Where Correct Chunks Were Retrieved",
+                xaxis_title="Rank Position",
+                yaxis_title="Frequency",
+                xaxis=dict(tickmode='linear', tick0=1, dtick=1),
+                showlegend=False
+            )
+            st.plotly_chart(fig, use_container_width=True)
+        else:
+            st.info("No position data available")
+
+def load_confluence_results(version: str, rerank_option: str):
+    """Load Confluence evaluation results based on version and rerank option"""
+    rerank_suffix = "with_rerank" if rerank_option == "With Rerank" else "without_rerank"
+    filename = f"evaluation_report_{version.lower()}_{rerank_suffix}.json"
+    
+    possible_paths = [
+        filename,
+        f"output/{filename}",
+        f"results/{filename}",
+        f"../{filename}",
+        f"data/{filename}"
+    ]
+    
+    for path in possible_paths:
+        if os.path.exists(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+    
+    return None
 
 def main():
     st.sidebar.title("Settings")
     
-    # Try to load default results
-    default_results = load_default_results()
+    # Dropdown to select data source
+    data_source = st.sidebar.selectbox(
+        "Select Data Source",
+        ["MPM - ORP", "MPM - LM", "Confluence - LM", "Jira - LM"]
+    )
     
-    uploaded_file = st.sidebar.file_uploader("Upload evaluation results JSON (optional)", type=['json'])
-    
-    if uploaded_file:
-        results = json.load(uploaded_file)
-        st.sidebar.success("✅ Loaded from uploaded file")
-    elif default_results:
-        results = default_results
-        st.sidebar.info("📁 Loaded from default file")
-    else:
-        st.warning("⚠️ No evaluation results found. Please upload a JSON file from the sidebar.")
-        st.info("Expected file location: `evaluation_results_new.json`")
+    # Check if data is available
+    if data_source == "MPM - LM":
+        st.warning("⚠️ Data has not been evaluated yet")
+        return
+    elif data_source == "Jira - LM":
+        st.warning("⚠️ Data has not been evaluated yet")
         return
     
+    # For Confluence - LM, add R4/R5 and Rerank dropdowns
+    if data_source == "Confluence - LM":
+        col1, col2 = st.sidebar.columns(2)
+        with col1:
+            version = st.sidebar.selectbox("Version", ["R4", "R5"])
+        with col2:
+            rerank_option = st.sidebar.selectbox("Rerank", ["Without Rerank", "With Rerank"])
+        
+        # Load Confluence results
+        results = load_confluence_results(version, rerank_option)
+        if not results:
+            st.warning(f"⚠️ File not found: evaluation_report_{version.lower()}_{'with_rerank' if rerank_option == 'With Rerank' else 'without_rerank'}.json")
+            return
+        st.sidebar.success(f"✅ Loaded {version} {rerank_option}")
+    else:
+        # MPM - ORP (current condition)
+        uploaded_file = st.sidebar.file_uploader("Upload evaluation results JSON (optional)", type=['json'])
+        
+        if uploaded_file:
+            results = json.load(uploaded_file)
+            st.sidebar.success("✅ Loaded from uploaded file")
+        else:
+            default_results = load_default_results()
+            if default_results:
+                results = default_results
+                st.sidebar.info("📁 Loaded from default file")
+            else:
+                st.warning("⚠️ No evaluation results found. Please upload a JSON file from the sidebar.")
+                st.info("Expected file location: `evaluation_results_new.json`")
+                return
+    
     # Render dashboard
-    dashboard = StreamlitDashboard(results)
+    if data_source == "Confluence - LM":
+        dashboard = ConfluenceDashboard(results)
+    else:
+        dashboard = StreamlitDashboard(results)
+    
     dashboard.render()
 
 
