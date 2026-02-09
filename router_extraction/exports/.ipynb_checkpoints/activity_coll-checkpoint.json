@@ -1,0 +1,55 @@
+[
+  {
+    "id": "1677115b-fdd4-4ecd-bda3-0fec1e96c942",
+    "payload": {
+      "activity_name": "Head Office",
+      "parent_project_uuid": "6113717a-9a24-4d1a-add8-a55527c473b0",
+      "parent_project_name": "WMS",
+      "summary": "## 1. Activity Overview\n- **Activity Name**: Workflow Management System (WFMS) – Head Office Module\n- **Project Context**: This activity focuses on the technical design and implementation of the Head Office module within the Workflow Management System (WFMS), aimed at automating and orchestrating end-to-end business workflows across multiple departments and processes.\n- **Document Types Integrated**: SD (System Design)\n- **Activity Objective**: To establish a unified, role-based workflow orchest...",
+      "children_doc_type_uuids": [
+        "7b221b99-7871-4fc4-8f6e-457fbd90a90a",
+        "49bf274e-fe9b-4d5a-bd16-3a6c9e61dc5c"
+      ]
+    }
+  },
+  {
+    "id": "832b221a-3918-4ba7-86d0-306390964069",
+    "payload": {
+      "activity_name": "ORP_Workflow",
+      "parent_project_uuid": "caca9900-c779-40db-80f0-0b4d3d9a7c1f",
+      "parent_project_name": "ORP",
+      "summary": "## 1. Activity Overview\n- **Activity Name**: ORP_Workflow\n- **Project Context**: This activity focuses on the design and implementation of a centralized, digitized workflow management system (WFMS) for the Operation Request Portal (ORP) to streamline and automate operational processes across Business Units, BOC, and related functions, reducing manual effort and enhancing control, compliance, and user experience.\n- **Document Types Integrated**: BRD, SD\n- **Activity Objective**: To deliver a comp...",
+      "children_doc_type_uuids": [
+        "06a0cfd1-b4c2-4d79-b0c5-fde2560ce1ae",
+        "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+      ]
+    }
+  },
+  {
+    "id": "a1628228-1edf-4fec-a49c-0e91b9ed138e",
+    "payload": {
+      "activity_name": "ORP_Portal",
+      "parent_project_uuid": "caca9900-c779-40db-80f0-0b4d3d9a7c1f",
+      "parent_project_name": "ORP",
+      "summary": "## 1. Activity Overview\n- **Activity Name**: ORP_Portal\n- **Project Context**: The ORP_Portal activity is a comprehensive digital transformation initiative under the ORP (Operation Request Portal) project, aimed at centralizing, automating, and integrating fragmented operational workflows across Business Units and branches to achieve Zero Operations at Business Units and enhance operational efficiency, customer experience, and compliance.\n- **Document Types Integrated**: BRD, FSD, SD\n- **Activit...",
+      "children_doc_type_uuids": [
+        "ffa846b4-ebe4-41b4-aed9-5589081947d1",
+        "00a20470-186c-47b0-aa21-c212409a92a5",
+        "54986cc6-fd82-4adf-a8ef-120888b0aa67"
+      ]
+    }
+  },
+  {
+    "id": "c2ffce7e-3a0c-47cb-a470-b2511ff6c3d3",
+    "payload": {
+      "activity_name": "BOC",
+      "parent_project_uuid": "6113717a-9a24-4d1a-add8-a55527c473b0",
+      "parent_project_name": "WMS",
+      "summary": "## 1. Activity Overview\n- **Activity Name**: Business Operation Center (BOC) Workflow Management System (WFMS) Development\n- **Project Context**: This activity focuses on the design and implementation of a unified Workflow Management System (WFMS) to support core operational workflows within the Business Operation Center (BOC), including Transaksi Internal, IT Services, General Order, and related financial and service processes.\n- **Document Types Integrated**: SD (System Design) — specifically,...",
+      "children_doc_type_uuids": [
+        "c6959fac-7108-4edb-9552-7133a8b3055f",
+        "0cc5fe27-deb3-41f3-abba-5d34bf38c216"
+      ]
+    }
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "document": {
+    "WMS\\Head Office\\TSD": 1,
+    "ORP\\ORP_Portal\\FSD": 1
+  },
+  "orp": {
+    "ORP\\ORP_Portal\\TSD": 1,
+    "ORP\\ORP_Workflow\\BRD": 1,
+    "ORP\\ORP_Portal\\FSD": 1,
+    "ORP\\ORP_Portal\\BRD": 1
+  },
+  "workflow": {
+    "WMS\\BOC\\BRD": 1
+  },
+  "judul": {},
+  "integrasi": {
+    "ORP\\ORP_Portal\\TSD": 1
+  },
+  "pembukuan": {},
+  "fee": {
+    "ORP\\ORP_Workflow\\TSD": 1
+  },
+  "interbranch": {
+    "ORP\\ORP_Workflow\\TSD": 1
+  },
+  "recurring": {
+    "ORP\\ORP_Portal\\TSD": 1
+  }
+}

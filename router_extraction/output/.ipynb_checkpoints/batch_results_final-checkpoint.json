@@ -1,0 +1,2217 @@
+{
+  "metadata": {
+    "execution_timestamp": "2026-01-08T10:21:24.457347",
+    "total_questions": 76,
+    "total_successful": 76,
+    "total_failed": 0,
+    "execution_duration_seconds": 524.6686944961548,
+    "batch_size": 5,
+    "mode": "async_batch"
+  },
+  "results": {
+    "doc": {
+      "document_path": "path/for/doc",
+      "questions": {
+        "doc_1_single_doc_factual": {
+          "question": "What is the project code and document type specified in the header of the WFMS Agile Specifications Document for BOC dated June 2023?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 7227.843999862671,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "BOC"
+            ],
+            "activity_id": [
+              "c2ffce7e-3a0c-47cb-a470-b2511ff6c3d3"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "0cc5fe27-deb3-41f3-abba-5d34bf38c216"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\BOC\\TSD\\01\\output.md"
+          ]
+        },
+        "doc_1_no_doc": {
+          "question": "What is the current interest rate for Bank Mandiri's savings accounts as of December 2025?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3949.742078781128,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_1_long_queries": {
+          "question": "In the context of the Workflow Management System (WFMS) project as detailed in the Agile Specifications Document v.0.1 from June 2023 with Project Code RCO2301010, considering the preface on functional and non-functional requirements, the document change control table, the table of contents outlining executive summary, business process requirements, and technical specifications, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the baseline for subsequent development activities such as design, customization, and testing, while ensuring compliance with Bank Mandiri's proprietary information policies and alignment with the project charter's agreed scope for application modules supporting business area needs?",
+          "test_type": "long_queries",
+          "status": "success",
+          "execution_time_ms": 10727.991342544556,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "Head Office",
+              "BOC"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942",
+              "c2ffce7e-3a0c-47cb-a470-b2511ff6c3d3"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "0cc5fe27-deb3-41f3-abba-5d34bf38c216"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\BOC\\TSD\\01\\output.md"
+          ]
+        },
+        "doc_2_single_doc_factual": {
+          "question": "Explain the details mentioned in the WFMS Specifications Document v.0.6 for Head Office activity from June 2023 with project code of RCO2301010?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 6384.354829788208,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "Head Office"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "49bf274e-fe9b-4d5a-bd16-3a6c9e61dc5c"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\Agile\\TSD\\03\\output.md"
+          ]
+        },
+        "doc_2_no_doc": {
+          "question": "What is the headquarters address of Bank Mandiri in Jakarta?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 5444.363355636597,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "Head Office"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_2_long_queries": {
+          "question": "In the context of the Workflow Management System (WFMS) project as detailed in the Agile Specifications Document v.0.6 for Head Office activity from June 2023 with Project Code RCO2301010, considering the preface on functional and non-functional requirements covering functional, data, security controls, interfAces, general ledger entries, and agreed gaps resolution, the document change control table, the table of contents outlining executive summary, business process requirements, technical specifications, and appendices, the approval table with roles like Approver, Reviewer, and Editor including timestamps such as 12 July 2024 20:32:16 for Dani Supriyadi and 12 July 2024 18:57:49 for Maria Sartika Tambun, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the baseline for subsequent development activities such as design, customization, and testing, while ensuring compliance with Bank Mandiri's proprietary information policies and alignment with the project charter's agreed scope for application modules supporting business area needs?",
+          "test_type": "long_queries",
+          "status": "success",
+          "execution_time_ms": 8425.836324691772,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "Head Office"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "49bf274e-fe9b-4d5a-bd16-3a6c9e61dc5c"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\Agile\\TSD\\03\\output.md"
+          ]
+        },
+        "doc_3_single_doc_factual": {
+          "question": "What is the sprint number and author of the WFMS Requirement Document version 2.0 November 2024 for Head Office activity?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 7553.957223892212,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "Head Office"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942"
+            ],
+            "doc_type_name": [
+              "BRD"
+            ],
+            "doc_type_id": [
+              "49bf274e-fe9b-4d5a-bd16-3a6c9e61dc5c"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\Agile\\BSD\\02\\output.md"
+          ]
+        },
+        "doc_3_no_doc": {
+          "question": "What is the total number of branches Bank Mandiri has worldwide?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3283.3261489868164,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_3_long_queries": {
+          "question": "In the context of the Workflow Management System (WFMS) Sprint 5 project as detailed in the Requirement Document version 2.0 November 2024 for Head Office activity with Project Code RCO2301010, considering the preface on business requirements elicited from stakeholders, the purpose of answering what business wants without specifying how, the role as input to FSD and development phases, the document change control table with version 0.1 on 07/11/2024 by Muhammad Ibnu Farchan, the checklist table with columns for NO, CHECKLIST ITEM, KRITERIA, AVAILABILITY (Y/N), and REMARKS, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the foundation for communicating business needs to the technology team, ensuring agreement with stakeholders, and setting forth requirements in the scope of work within the Project Charter?",
+          "test_type": "long_queries",
+          "status": "success",
+          "execution_time_ms": 8289.149761199951,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "Head Office"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942"
+            ],
+            "doc_type_name": [
+              "BRD"
+            ],
+            "doc_type_id": [
+              "7b221b99-7871-4fc4-8f6e-457fbd90a90a"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\Agile\\BSD\\02\\output.md"
+          ]
+        },
+        "doc_4_single_doc_factual": {
+          "question": "What is the objective of the WFMS Project Requirement Document version 0.1 16 Maret 2023?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 8067.907333374023,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "Head Office"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "49bf274e-fe9b-4d5a-bd16-3a6c9e61dc5c"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\BOC\\BSD\\01\\output.md"
+          ]
+        },
+        "doc_4_no_doc": {
+          "question": "What is the name of Bank Mandiri's CEO?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3392.6517963409424,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_4_long_queries": {
+          "question": "In the context of the Workflow Management System (WFMS) Sprint 1 project as detailed in the Requirement Document v.1.0 from Maret 2023 for BOC activity with Project Code RCO2301010, considering the preface on business requirements elicited from stakeholders including documentation of needs and expectations, the purpose of BRD answering what business wants without how, the role as input to FSD and development/testing phases, the document change control table with versions 0.1 on 13/03/2023 and 1.0 on 29/5/2023 by Team Project, the checklist table with columns for NO, CHECKLIST ITEM, KRITERIA, AVAILABILITY (Y/N), and REMARKS, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the foundation for communicating business needs to the technology team, ensuring agreement with stakeholders, and setting forth requirements in the scope of work within the Project Charter?",
+          "test_type": "long_queries",
+          "status": "success",
+          "execution_time_ms": 8119.301080703735,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "BOC"
+            ],
+            "activity_id": [
+              "c2ffce7e-3a0c-47cb-a470-b2511ff6c3d3"
+            ],
+            "doc_type_name": [
+              "BRD"
+            ],
+            "doc_type_id": [
+              "c6959fac-7108-4edb-9552-7133a8b3055f"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\BOC\\BSD\\01\\output.md"
+          ]
+        },
+        "doc_5_single_doc_factual": {
+          "question": "What is the activity code and author of the WFMS Workflow for Head Office Requirement Document v.0.1 from 16 Maret 2023?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 10522.212028503418,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "BOC"
+            ],
+            "activity_id": [
+              "c2ffce7e-3a0c-47cb-a470-b2511ff6c3d3"
+            ],
+            "doc_type_name": [
+              "BRD"
+            ],
+            "doc_type_id": [
+              "c6959fac-7108-4edb-9552-7133a8b3055f"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\Agile\\BSD\\01\\output.md"
+          ]
+        },
+        "doc_5_no_doc": {
+          "question": "What is the market capitalization of Bank Mandiri?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 5858.641624450684,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_5_long_queries": {
+          "question": "In the context of the Workflow Management System (WFMS) Workflow for Head Office project as detailed in the Requirement Document v.0.1 from Maret 2023 with Project Code RCO2301010, considering the preface on business requirements elicited from stakeholders including documentation of needs and expectations, the purpose of BRD answering what business wants without how, the role as input to FSD and development/testing phases, the document change control table with version 0.1 by Dewa Gede Satrya Dhiatmika, the checklist table with items like BACKGROUND, OBJECTIVES, STAKEHOLDER, SOLUTION OVERVIEW, and others, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the foundation for communicating business needs to the technology team, ensuring agreement with stakeholders, and setting forth requirements in the scope of work within the Project Charter?",
+          "test_type": "long_queries",
+          "status": "success",
+          "execution_time_ms": 8377.637386322021,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "Head Office"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942"
+            ],
+            "doc_type_name": [
+              "BRD"
+            ],
+            "doc_type_id": [
+              "7b221b99-7871-4fc4-8f6e-457fbd90a90a"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\Agile\\BSD\\01\\output.md"
+          ]
+        },
+        "doc_6_single_doc_factual": {
+          "question": "What is the sprint number of the WFMS Agile Requirement Document version 2.0 November 2024 for Head Office activity?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 7422.9841232299805,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "Head Office"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "49bf274e-fe9b-4d5a-bd16-3a6c9e61dc5c"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\Agile\\BSD\\02\\output.md"
+          ]
+        },
+        "doc_6_no_doc": {
+          "question": "What is the annual revenue of Bank Mandiri for 2024?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3335.172414779663,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_6_long_queries": {
+          "question": "In the context of the Workflow Management System (WFMS) project as detailed in the Agile Specifications Document v.0.10 from July 2024 with Project Code RCO2301010, considering the preface on functional and non-functional requirements covering functional, data, security controls, interfAces, general ledger entries, and agreed gaps resolution, the document change control table with version 0.1 in Juni 2024, the table of contents outlining executive summary, business process requirements, technical specifications, and appendices, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the baseline for subsequent development activities such as design, customization, and testing, while ensuring compliance with Bank Mandiri's proprietary information policies and alignment with the project charter's agreed scope for application modules supporting business area needs?",
+          "test_type": "long_queries",
+          "status": "success",
+          "execution_time_ms": 10412.570476531982,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "Head Office",
+              "BOC"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942",
+              "c2ffce7e-3a0c-47cb-a470-b2511ff6c3d3"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "49bf274e-fe9b-4d5a-bd16-3a6c9e61dc5c"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\Agile\\TSD\\03\\output.md",
+            "WMS\\Head Office\\Agile\\TSD\\01\\output.md",
+            "WMS\\Head Office\\Agile\\TSD\\02\\output.md"
+          ]
+        },
+        "doc_7_single_doc_factual": {
+          "question": "What is the summary of document change control for the WFMS Agile Specifications Document version 2.0 from July 2024?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 14093.361139297485,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "Head Office",
+              "ORP_Workflow",
+              "ORP_Portal",
+              "BOC"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942",
+              "832b221a-3918-4ba7-86d0-306390964069",
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e",
+              "c2ffce7e-3a0c-47cb-a470-b2511ff6c3d3"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "49bf274e-fe9b-4d5a-bd16-3a6c9e61dc5c"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\Agile\\TSD\\01\\output.md"
+          ]
+        },
+        "doc_7_no_doc": {
+          "question": "What is the number of employees at Bank Mandiri?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3385.239839553833,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_7_long_queries": {
+          "question": "In the context of the Workflow Management System (WFMS) project as detailed in the Agile Specifications Document v.0.10 from July 2024 with Project Code RCO2301010, considering the preface on functional and non-functional requirements covering functional, data, security controls, interfAces, general ledger entries, and agreed gaps resolution, the document change control table with version 0.1 in Juni 2024 for DSR/GSR Sprint 4, the table of contents outlining executive summary, business process requirements, technical specifications, and appendices, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the baseline for subsequent development activities such as design, customization, and testing, while ensuring compliance with Bank Mandiri's proprietary information policies and alignment with the project charter's agreed scope for application modules supporting business area needs?",
+          "test_type": "long_queries",
+          "status": "success",
+          "execution_time_ms": 10385.52474975586,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "Head Office",
+              "BOC"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942",
+              "c2ffce7e-3a0c-47cb-a470-b2511ff6c3d3"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "49bf274e-fe9b-4d5a-bd16-3a6c9e61dc5c"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\Agile\\TSD\\02\\output.md",
+            "WMS\\Head Office\\Agile\\TSD\\01\\output.md"
+          ]
+        },
+        "doc_8_single_doc_factual": {
+          "question": "Database table schema named PR_MDR_DATA_CTO_RECORDPINDAHE on document date July 2024?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 4061.1987113952637,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\TSD\\02\\output.md"
+          ]
+        },
+        "doc_8_no_doc": {
+          "question": "What is the SWIFT code for Bank Mandiri?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3262.8753185272217,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_8_single_doc": {
+          "question": "What is the internal IP address for Pega Platform ?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 7423.597812652588,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "BOC"
+            ],
+            "activity_id": [
+              "c2ffce7e-3a0c-47cb-a470-b2511ff6c3d3"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\BOC\\TSD\\01\\output.md"
+          ]
+        },
+        "doc_9_single_doc_factual": {
+          "question": "Doc change control of Sprint 2 and Sprint 3 on November 2023 project code RCO2301010",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 3298.8595962524414,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\Agile\\TSD\\02\\output.md"
+          ]
+        },
+        "doc_9_no_doc": {
+          "question": "What is the customer service hotline number for Bank Mandiri?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3386.888265609741,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_9_multi_docs": {
+          "question": "Pengembangan e-channel operation engine yang dapat integrasi dengan channel transaksi digital?",
+          "test_type": "multi_doc",
+          "status": "success",
+          "execution_time_ms": 9293.47562789917,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "00a20470-186c-47b0-aa21-c212409a92a5"
+            ]
+          },
+          "expected_documents": [
+            "WMS\\Head Office\\TSD\\03\\output.md",
+            "WMS\\Head Office\\TSD\\02\\output.md"
+          ]
+        },
+        "doc_10_single_doc_factual": {
+          "question": "ORP project of deliverable acceptance certificate on February 2025?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 7830.676078796387,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": []
+          },
+          "expected_documents": [
+            "ORP\\ORP_Portal\\BRD\\output.md"
+          ]
+        },
+        "doc_10_no_doc": {
+          "question": "What is the official website of Bank Mandiri?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3272.9694843292236,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_10_single_docs": {
+          "question": "Summary of changes by Hartini Ayunda Firsty Hasbi N Dewa Gede S 24 February 2025? pada dokumen ORP Portal",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 9157.329797744751,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "00a20470-186c-47b0-aa21-c212409a92a5"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Portal\\BRD\\output.md"
+          ]
+        },
+        "doc_11_single_doc_factual": {
+          "question": "Who is the Author of ORP project that have release 4 of Functional Specifications Document on 14 March 2025?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 11675.484418869019,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "FSD"
+            ],
+            "doc_type_id": [
+              "54986cc6-fd82-4adf-a8ef-120888b0aa67"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Portal\\Agile\\FSD\\01\\output.md"
+          ]
+        },
+        "doc_11_no_doc": {
+          "question": "What is the main headquarters location of Bank Mandiri?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 5448.30846786499,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "Head Office"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_11_multi_docs": {
+          "question": "Who is the author that change FSD of ORP Portal Project on 14 March 2025?",
+          "test_type": "multi_doc",
+          "status": "success",
+          "execution_time_ms": 8371.185064315796,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "FSD"
+            ],
+            "doc_type_id": []
+          },
+          "expected_documents": [
+            "ORP\\ORP_Portal\\Agile\\FSD\\01\\output.md",
+            "ORP\\ORP_Portal\\Agile\\FSD\\02\\output.md",
+            "ORP\\ORP_Portal\\Agile\\FSD\\03\\output.md"
+          ]
+        },
+        "doc_12_single_doc_factual": {
+          "question": "FSD docs that have summary of changes about Delete duplicate process in flow speed up powercash",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 7049.031972885132,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "00a20470-186c-47b0-aa21-c212409a92a5"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Portal\\Agile\\TSD\\02\\output.md"
+          ]
+        },
+        "doc_12_no_doc": {
+          "question": "What is the customer service email address for Bank Mandiri?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3319.4143772125244,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_12_multi_docs": {
+          "question": "Pada document FSD ORP Portal Existing Process STP Power Cash, darimana field name diambil?",
+          "test_type": "multi_doc",
+          "status": "success",
+          "execution_time_ms": 9123.408794403076,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "FSD"
+            ],
+            "doc_type_id": [
+              "54986cc6-fd82-4adf-a8ef-120888b0aa67"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Portal\\Agile\\TSD\\02\\output.md",
+            "ORP\\ORP_Portal\\Agile\\TSD\\03\\output.md"
+          ]
+        },
+        "doc_13_single_doc_factual": {
+          "question": "File FSD yang mencakup STP Card & Credit Services (Surrounding part ICS)?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 9026.457071304321,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "FSD"
+            ],
+            "doc_type_id": [
+              "54986cc6-fd82-4adf-a8ef-120888b0aa67"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Portal\\Agile\\FSD\\03\\output.md"
+          ]
+        },
+        "doc_13_no_doc": {
+          "question": "What is the primary business focus of Bank Mandiri?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3346.121072769165,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_13_multi_docs": {
+          "question": "Apa itu inquiry powercash di ORP Portal dan bagaimana cara kerjanya?",
+          "test_type": "multi_doc",
+          "status": "success",
+          "execution_time_ms": 8987.575054168701,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "FSD"
+            ],
+            "doc_type_id": [
+              "54986cc6-fd82-4adf-a8ef-120888b0aa67"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Portal\\Agile\\FSD\\03\\output.md",
+            "ORP\\ORP_Portal\\Agile\\FSD\\02\\output.md"
+          ]
+        },
+        "doc_14_single_doc_factual": {
+          "question": "ORP dengan project code ECO2501010 di tahun 2025 tanggal 20 Februari untuk business document?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 8380.80382347107,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": []
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\BRD\\output.md"
+          ]
+        },
+        "doc_14_no_doc": {
+          "question": "deviden mandiri tahun 2025?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3318.3915615081787,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_14_single_doc": {
+          "question": "tanggal berapa document BRD ORP Workflow diubah finalnya dan oleh siapa?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 6245.431900024414,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "BRD"
+            ],
+            "doc_type_id": [
+              "06a0cfd1-b4c2-4d79-b0c5-fde2560ce1ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\BRD\\output.md"
+          ]
+        },
+        "doc_14_single": {
+          "question": "Seperti apa pengembangan ORP Workflow di ECO yang berdampak pada Workflow management system?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 9098.142147064209,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "00a20470-186c-47b0-aa21-c212409a92a5"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\BRD\\output.md"
+          ]
+        },
+        "doc_15_single_doc_factual": {
+          "question": "Author Technical Document Workflow Management System Scope SOA - Project Code ECO2501010?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 11090.004444122314,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "Head Office",
+              "BOC"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942",
+              "c2ffce7e-3a0c-47cb-a470-b2511ff6c3d3"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "0cc5fe27-deb3-41f3-abba-5d34bf38c216",
+              "49bf274e-fe9b-4d5a-bd16-3a6c9e61dc5c"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\01\\output.md"
+          ]
+        },
+        "doc_15_no_doc": {
+          "question": "What is the exchange rate for USD to IDR on July 1, 2025?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3300.7335662841797,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_15_single_doc": {
+          "question": "Perubahan apa yang dilakukan oleh Ibnu pada dokumen ORP Workflow mengenai Penyesuaian routing kantor pusat untuk Remis dan MKUT?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 8475.076675415039,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\01\\output.md"
+          ]
+        },
+        "doc_16_single_doc_factual": {
+          "question": "Dokumen Technical Specification pada tanggal 5/14/2025 di activity ORP Workflow",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 7327.7692794799805,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\02\\output.md"
+          ]
+        },
+        "doc_16_no_doc": {
+          "question": "What is the total assets value of Bank Mandiri as of 2024?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 5467.648983001709,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_16_multi_docs": {
+          "question": "Document ORP workflow dengan judul Integrasi Pembukuan Fee Interbranch - Recurring",
+          "test_type": "multi_doc",
+          "status": "success",
+          "execution_time_ms": 8497.682332992554,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\02\\output.md",
+            "ORP\\ORP_Workflow\\Agile\\TSD\\04\\output.md"
+          ]
+        },
+        "doc_17_single_doc_factual": {
+          "question": "Who are the authors of the ORP Workflow TSD document with project code ECO2501010 dated 05/08/2025?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 8436.298608779907,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": []
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\01\\output.md"
+          ]
+        },
+        "doc_17_no_doc": {
+          "question": "What is the inflation rate in Indonesia for 2025?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3302.847385406494,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_17_multi_docs": {
+          "question": "Apa perbedaan antara Priority Line KCM Retail dan Terminate GSR dalam ORP Workflow?",
+          "test_type": "multi_doc",
+          "status": "success",
+          "execution_time_ms": 8427.303552627563,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\01\\output.md",
+            "ORP\\ORP_Workflow\\Agile\\TSD\\03\\output.md"
+          ]
+        },
+        "doc_18_single_doc_factual": {
+          "question": "Siapa yang membuat perubahan tentang routing kantor pusat untuk Remis dan MKUT pada ORP Workflow TSD?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 8417.394399642944,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\01\\output.md"
+          ]
+        },
+        "doc_18_no_doc": {
+          "question": "What is the current interest rate offered by Bank Mandiri for fixed deposits?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3381.133794784546,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_18_long_queries": {
+          "question": "Dalam konteks Workflow Management System (WFMS) untuk Operation Request Portal 2025 dengan Project Code ECO2501010, jelaskan bagaimana fitur Priority Line KCM Retail, Terminate GSR, dan Pengajuan Uang Muka terintegrasi dalam sistem, serta bagaimana proses Remis Tarik dan Remis Setor dari BOC ke Kantor Pusat/Cabang dikelola dalam sistem?",
+          "test_type": "long_queries",
+          "status": "success",
+          "execution_time_ms": 10590.56830406189,
+          "ner_output": {
+            "project_name": [
+              "WMS",
+              "ORP"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0",
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "BOC"
+            ],
+            "activity_id": [
+              "c2ffce7e-3a0c-47cb-a470-b2511ff6c3d3"
+            ],
+            "doc_type_name": [
+              "BRD"
+            ],
+            "doc_type_id": [
+              "c6959fac-7108-4edb-9552-7133a8b3055f"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\01\\output.md"
+          ]
+        },
+        "doc_19_single_doc_factual": {
+          "question": "Apa judul lengkap dari document TSD 02 ORP Workflow yang diupdate pada 5/14/2025?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 6210.736513137817,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\02\\output.md"
+          ]
+        },
+        "doc_19_no_doc": {
+          "question": "Berapa total kapitalisasi pasar Bank Mandiri pada Q3 2025?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3278.4085273742676,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_19_multi_docs": {
+          "question": "Apa saja modul-modul yang tercakup dalam Bulk Account Opening, Setup Budget Limit, dan Pembukuan Fee Interbranch?",
+          "test_type": "multi_doc",
+          "status": "success",
+          "execution_time_ms": 8427.116394042969,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\02\\output.md",
+            "ORP\\ORP_Workflow\\Agile\\TSD\\04\\output.md"
+          ]
+        },
+        "doc_20_single_doc_factual": {
+          "question": "Kapan Integrasi Pembukuan Fee Interbranch - Recurring document dirilis dengan versi 1.1?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 9142.733097076416,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "00a20470-186c-47b0-aa21-c212409a92a5"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\06\\output.md"
+          ]
+        },
+        "doc_20_no_doc": {
+          "question": "What are the latest dividend payments made by Bank Mandiri to shareholders?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3328.6848068237305,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_20_long_queries": {
+          "question": "Jelaskan secara detail bagaimana Register Scheduler, Stop Scheduler, Run Scheduler, dan Log Scheduler bekerja dalam Standing Instruction untuk Fee Interbranch Recurring, serta apa saja gap analysis yang diidentifikasi?",
+          "test_type": "long_queries",
+          "status": "success",
+          "execution_time_ms": 9087.61739730835,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\06\\output.md"
+          ]
+        },
+        "doc_21_single_doc_factual": {
+          "question": "Siapa author yang melakukan draft document TSD 08 ORP Workflow pada Oktober 2025?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 6222.889184951782,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\08\\output.md"
+          ]
+        },
+        "doc_21_no_doc": {
+          "question": "What is the annual revenue target for Bank Mandiri's digital banking division?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3265.9358978271484,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_21_multi_docs": {
+          "question": "Sebutkan semua enhancement dan improvement yang tercakup dalam TSD 08 ORP Workflow?",
+          "test_type": "multi_doc",
+          "status": "success",
+          "execution_time_ms": 6214.149713516235,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\07\\output.md",
+            "ORP\\ORP_Workflow\\Agile\\TSD\\08\\output.md"
+          ]
+        },
+        "doc_22_single_doc_factual": {
+          "question": "Apa versi awal dari document Integrasi Pembukuan Fee Interbranch - Recurring TSD dan kapan di-release?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 8059.595108032227,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "Head Office"
+            ],
+            "activity_id": [
+              "1677115b-fdd4-4ecd-bda3-0fec1e96c942"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "49bf274e-fe9b-4d5a-bd16-3a6c9e61dc5c"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\06\\output.md"
+          ]
+        },
+        "doc_22_no_doc": {
+          "question": "What is the number of ATMs operated by Bank Mandiri across Indonesia?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3373.258352279663,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_22_multi_docs": {
+          "question": "Bagaimana proses Pengajuan Uang Muka dan Pertanggungjawaban dikelola dalam sistem WFMS pada ORP Workflow?",
+          "test_type": "multi_doc",
+          "status": "success",
+          "execution_time_ms": 10801.190853118896,
+          "ner_output": {
+            "project_name": [
+              "ORP",
+              "WMS"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f",
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\01\\output.md",
+            "ORP\\ORP_Workflow\\Agile\\TSD\\07\\output.md"
+          ]
+        },
+        "doc_23_single_doc_factual": {
+          "question": "Apa saja fitur enhancement pada Mandiri Auto Debit dan DSR/GSR dalam document TSD 08 pada ORP Workflow?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 6837.279796600342,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\08\\output.md"
+          ]
+        },
+        "doc_23_no_doc": {
+          "question": "What is the credit rating of Bank Mandiri from international rating agencies?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3449.826717376709,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_23_long_queries": {
+          "question": "Dalam konteks Enhancement Onboarding KCM Retail, Maintenance SCM (Kopra Value Chain), dan Enhancement Mandiri Auto Debit yang tercantum dalam TSD 08, jelaskan data entry flow, approval process, dan bagaimana error handling diterapkan untuk setiap modul?",
+          "test_type": "long_queries",
+          "status": "success",
+          "execution_time_ms": 8570.979356765747,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\08\\output.md"
+          ]
+        },
+        "doc_24_single_doc_factual": {
+          "question": "Apa nama lengkap modulus yang mencakup Priority Line KCM Retail, Enh. DSR/GSR – Terminate GSR, dan Enh. DSR/GSR pada TSD 01 pada ORP Workflow?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 8364.301443099976,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Workflow"
+            ],
+            "activity_id": [
+              "832b221a-3918-4ba7-86d0-306390964069"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\01\\output.md"
+          ]
+        },
+        "doc_24_no_doc": {
+          "question": "What percentage of Bank Mandiri's loan portfolio is allocated to SMEs?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3334.674596786499,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_24_multi_docs": {
+          "question": "Apa perbedaan utama antara document change control pada TSD 01 dan TSD 02 pada ORP Workflow?",
+          "test_type": "multi_doc",
+          "status": "success",
+          "execution_time_ms": 9463.859796524048,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "00a20470-186c-47b0-aa21-c212409a92a5"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\01\\output.md",
+            "ORP\\ORP_Workflow\\Agile\\TSD\\02\\output.md"
+          ]
+        },
+        "doc_25_single_doc_factual": {
+          "question": "Berapa halaman total dari document Integrasi Pembukuan Fee Interbranch - Recurring (TSD 06) versi 1.1?",
+          "test_type": "single_doc",
+          "status": "success",
+          "execution_time_ms": 8302.048921585083,
+          "ner_output": {
+            "project_name": [
+              "WMS"
+            ],
+            "project_id": [
+              "6113717a-9a24-4d1a-add8-a55527c473b0"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "00a20470-186c-47b0-aa21-c212409a92a5",
+              "0cc5fe27-deb3-41f3-abba-5d34bf38c216",
+              "49bf274e-fe9b-4d5a-bd16-3a6c9e61dc5c",
+              "c96e1b9b-7124-4acd-bb51-83755f7350ae"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\06\\output.md"
+          ]
+        },
+        "doc_25_no_doc": {
+          "question": "What is the average transaction value in Bank Mandiri's mobile banking platform?",
+          "test_type": "no_doc",
+          "status": "success",
+          "execution_time_ms": 3278.7041664123535,
+          "ner_output": {
+            "project_name": [
+              "null"
+            ],
+            "project_id": [
+              "null"
+            ],
+            "activity_name": [
+              "null"
+            ],
+            "activity_id": [
+              "null"
+            ],
+            "doc_type_name": [
+              "null"
+            ],
+            "doc_type_id": [
+              "null"
+            ]
+          },
+          "expected_documents": []
+        },
+        "doc_25_long_queries": {
+          "question": "Bandingkan functional requirements, data requirements, technical specifications, dan security control requirements antara Bulk Account Opening Perorangan dan Setup Budget Limit yang tercantum dalam TSD 02 dan TSD 04 pada ORP Workflow?",
+          "test_type": "long_queries",
+          "status": "success",
+          "execution_time_ms": 9901.782512664795,
+          "ner_output": {
+            "project_name": [
+              "ORP"
+            ],
+            "project_id": [
+              "caca9900-c779-40db-80f0-0b4d3d9a7c1f"
+            ],
+            "activity_name": [
+              "ORP_Portal"
+            ],
+            "activity_id": [
+              "a1628228-1edf-4fec-a49c-0e91b9ed138e"
+            ],
+            "doc_type_name": [
+              "TSD"
+            ],
+            "doc_type_id": [
+              "00a20470-186c-47b0-aa21-c212409a92a5"
+            ]
+          },
+          "expected_documents": [
+            "ORP\\ORP_Workflow\\Agile\\TSD\\02\\output.md",
+            "ORP\\ORP_Workflow\\Agile\\TSD\\04\\output.md"
+          ]
+        }
+      },
+      "document_summary": {
+        "total_questions": 76,
+        "successful": 76,
+        "failed": 0,
+        "avg_execution_time_ms": 6903.535453896773
+      }
+    }
+  },
+  "summary": {
+    "total_documents": 1,
+    "documents_processed": 1,
+    "total_questions_processed": 76,
+    "total_successful": 76,
+    "total_failed": 0,
+    "success_rate": 1.0,
+    "total_execution_time_seconds": 524.6686944961548
+  },
+  "errors": []
+}

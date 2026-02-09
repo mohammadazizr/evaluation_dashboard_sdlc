@@ -1,0 +1,53 @@
+{
+  "execution_timestamp": "2026-01-26T09:30:56.215417",
+  "completion_timestamp": "2026-01-26T09:41:18.309737",
+  "total_duration_seconds": 622.093307,
+  "stages": [
+    {
+      "num": 1,
+      "name": "NER (Named Entity Recognition)",
+      "script": "router_extraction/run_ner.py",
+      "working_dir": "router_extraction"
+    },
+    {
+      "num": 2,
+      "name": "Retrieval with Reranking",
+      "script": "retrieve_process/retrieve.py",
+      "working_dir": "retrieve_process"
+    },
+    {
+      "num": 3,
+      "name": "Evaluation",
+      "script": "evaluation/evaluator.py",
+      "working_dir": "evaluation"
+    },
+    {
+      "num": 4,
+      "name": "Dashboard Generation",
+      "script": "evaluation/dashboard_generator.py",
+      "working_dir": "evaluation"
+    }
+  ],
+  "results": {
+    "NER (Named Entity Recognition)": {
+      "status": "success",
+      "returncode": 0,
+      "timestamp": "2026-01-26T09:33:40.576281"
+    },
+    "Retrieval with Reranking": {
+      "status": "success",
+      "returncode": 0,
+      "timestamp": "2026-01-26T09:41:17.656904"
+    },
+    "Evaluation": {
+      "status": "success",
+      "returncode": 0,
+      "timestamp": "2026-01-26T09:41:18.041277"
+    },
+    "Dashboard Generation": {
+      "status": "success",
+      "returncode": 0,
+      "timestamp": "2026-01-26T09:41:18.308724"
+    }
+  }
+}

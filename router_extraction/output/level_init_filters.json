@@ -1,0 +1,24 @@
+{
+  "project_names": {
+    "ORP": [
+      "ORP_Portal",
+      "ORP_Workflow"
+    ]
+  },
+  "activity_names": {
+    "ORP_Portal": [
+      "BRD",
+      "FSD",
+      "TSD"
+    ],
+    "ORP_Workflow": [
+      "BRD",
+      "TSD"
+    ]
+  },
+  "doc_type_names": [
+    "BRD",
+    "FSD",
+    "TSD"
+  ]
+}

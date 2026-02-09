@@ -1,0 +1,24 @@
+[
+  {
+    "id": "6113717a-9a24-4d1a-add8-a55527c473b0",
+    "payload": {
+      "proj_name": "WMS",
+      "summary": "## Executive Summary  \n- **Project Name & Strategic Context**: Workflow Management System (WMS) — a unified, configurable platform to automate and orchestrate end-to-end business workflows across Business Operation Center (BOC) and Head Office, enabling standardization, compliance, auditability, and real-time integration with core financial, document, and operational systems.  \n- **Program Objectives**:  \n  1. Deliver a centralized, rule-based WFMS platform to standardize and automate critical w...",
+      "children_activity_uuids": [
+        "1677115b-fdd4-4ecd-bda3-0fec1e96c942",
+        "c2ffce7e-3a0c-47cb-a470-b2511ff6c3d3"
+      ]
+    }
+  },
+  {
+    "id": "caca9900-c779-40db-80f0-0b4d3d9a7c1f",
+    "payload": {
+      "proj_name": "ORP",
+      "summary": "## Executive Summary\n- **Project Name & Strategic Context**: ORP (Operation Request Portal) is a strategic digital transformation initiative aimed at centralizing and automating fragmented operational workflows across Business Units and branches to achieve Zero Operations at Business Units, enhance operational efficiency, customer experience, and compliance.\n- **Program Objectives**: \n  1. Achieve Zero Operations at Business Units by centralizing and automating key operational workflows, enablin...",
+      "children_activity_uuids": [
+        "a1628228-1edf-4fec-a49c-0e91b9ed138e",
+        "832b221a-3918-4ba7-86d0-306390964069"
+      ]
+    }
+  }
+]

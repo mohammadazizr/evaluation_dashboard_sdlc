@@ -1,0 +1,937 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Retrieval Evaluation Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #1f2937;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            color: #6b7280;
+            font-size: 1.1em;
+        }
+
+        .config-info {
+            background: #f3f4f6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: flex;
+            gap: 30px;
+        }
+
+        .config-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .config-label {
+            font-weight: 600;
+            color: #4b5563;
+        }
+
+        .config-value {
+            color: #1f2937;
+            background: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: #6b7280;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .card-value {
+            color: #1f2937;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card-label {
+            color: #9ca3af;
+            font-size: 0.9em;
+        }
+
+        .card-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            font-size: 0.85em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            padding: 8px 0;
+            border: none;
+            background: none;
+            transition: color 0.2s;
+        }
+
+        .card-dropdown-toggle:hover {
+            color: #764ba2;
+        }
+
+        .card-dropdown-toggle .arrow {
+            transition: transform 0.3s ease;
+            font-size: 0.8em;
+        }
+
+        .card-dropdown-toggle.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .card-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: #6b7280;
+            font-size: 0.85em;
+            line-height: 1.6;
+        }
+
+        .card-dropdown-content.active {
+            max-height: 500px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-title {
+            color: #1f2937;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f9fafb;
+            color: #374151;
+            font-weight: 600;
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #1f2937;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .status-good {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .status-warning {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+
+        .status-poor {
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .footer {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            color: #6b7280;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .position-charts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .hierarchy-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hierarchy-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #6b7280;
+            transition: all 0.3s;
+        }
+
+        .hierarchy-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .hierarchy-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .hierarchy-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .hierarchy-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .metrics-grid,
+            .position-charts {
+                grid-template-columns: 1fr;
+            }
+            .hierarchy-selector {
+                flex-direction: column;
+            }
+            .hierarchy-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📊 RAG Retrieval Evaluation Dashboard</h1>
+            <p class="subtitle">Comprehensive analysis of retrieval system performance</p>
+            <div class="config-info">
+                <div class="config-item">
+                    <span class="config-label">Top-K:</span>
+                    <span class="config-value">10</span>
+                </div>
+                <div class="config-item">
+                    <span class="config-label">Confidence Threshold:</span>
+                    <span class="config-value">0.7</span>
+                </div>
+                <div class="config-item">
+                    <span class="config-label">Generated:</span>
+                    <span class="config-value">2026-02-03 10:30:12</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="summary-cards">
+            <div class="card">
+                <div class="card-title">Overall Success Rate</div>
+                <div class="card-value">74.0%</div>
+                <div class="card-label">Questions answered correctly</div>
+                <button class="card-dropdown-toggle" onclick="toggleDropdown(this)">
+                    <span>View Explanation</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="card-dropdown-content">
+                    <p>Overall Success Rate is the percentage of total questions that successfully found their expected documents in the retrieval results.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Average Precision</div>
+                <div class="card-value">30.6%</div>
+                <div class="card-label">Correct chunks in top-10</div>
+                <button class="card-dropdown-toggle" onclick="toggleDropdown(this)">
+                    <span>View Explanation</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="card-dropdown-content">
+                    <p>Average Precision measures the percentage of correct expected documents in each retrieved chunk.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Precision@3</div>
+                <div class="card-value">62.0%</div>
+                <div class="card-label">Correct doc found in top-3</div>
+                <button class="card-dropdown-toggle" onclick="toggleDropdown(this)">
+                    <span>View Explanation</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="card-dropdown-content">
+                    <p>Precision@3 measures the percentage of queries where at least one correct expected document is found within the top-3 retrieved results. This metric is useful for evaluating early retrieval performance.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Total Questions</div>
+                <div class="card-value">50</div>
+                <div class="card-label">Retrieval test cases</div>
+                <button class="card-dropdown-toggle" onclick="toggleDropdown(this)">
+                    <span>View Explanation</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="card-dropdown-content">
+                    <p>Total Questions represents the total number of test questions used in the retrieval evaluation process.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">No-Doc Detection</div>
+                <div class="card-value">100.0%</div>
+                <div class="card-label">Correctly rejected unanswerable</div>
+                <button class="card-dropdown-toggle" onclick="toggleDropdown(this)">
+                    <span>View Explanation</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="card-dropdown-content">
+                    <p>No-Doc Detection measures the ability to correctly identify questions that do not refer to any specific document, such as general questions that cannot be answered from the document collection.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Context Recall</div>
+                <div class="card-value">75.38%</div>
+                <div class="card-label">Retrieved expected documents</div>
+                <button class="card-dropdown-toggle" onclick="toggleDropdown(this)">
+                    <span>View Explanation</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="card-dropdown-content">
+                    <p>Context Recall Metrics measures the percentage of expected documents that were successfully retrieved across all test cases. Formula: (Total Retrieved Expected / Total Expected Count) × 100%</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">Mean Reciprocal Rank</div>
+                <div class="card-value">58.00%</div>
+                <div class="card-label">
+                    Avg. first position: 1.9<br>
+                    Questions with relevant docs: 37/50
+                </div>
+                <button class="card-dropdown-toggle" onclick="toggleDropdown(this)">
+                    <span>View Explanation</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="card-dropdown-content">
+                    <p>Mean Reciprocal Rank (MRR) measures how quickly the system finds the first correct document. It calculates the average of reciprocal ranks (1/rank) where rank is the position of the first relevant document found. The average first position shows at which rank the system typically finds the first relevant document. Questions with relevant docs shows how many questions successfully found at least one relevant document. Higher MRR values (closer to 100%) indicate better performance.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">NDCG (Normalized DCG)</div>
+                <div class="card-value">62.08%</div>
+                <div class="card-label">Ranking quality metric</div>
+                <button class="card-dropdown-toggle" onclick="toggleDropdown(this)">
+                    <span>View Explanation</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="card-dropdown-content">
+                    <p>NDCG (Normalized Discounted Cumulative Gain) measures the quality of the ranking by considering both the position and relevance of retrieved documents. It's calculated as DCG/IDCG, where DCG gives more weight to relevant documents at higher positions (discounted by log of position), and IDCG is the ideal maximum DCG. Values closer to 100% indicate better ranking quality. NDCG is particularly useful for evaluating how well the most important documents are ranked.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Comparison Chart -->
+        <div class="metrics-grid">
+            <div class="chart-container">
+                <h3 class="chart-title">Performance by Test Type</h3>
+                <canvas id="precisionChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Position Distribution Charts -->
+        <h2 style="color: white; margin: 30px 0 20px 0; font-size: 1.8em;">📍 Position Distribution Analysis</h2>
+        <div class="position-charts">
+            <div class="chart-container">
+                <h3 class="chart-title">Single Document Retrieval</h3>
+                <canvas id="positionChart1"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 class="chart-title">Multi-Document Synthesis</h3>
+                <canvas id="positionChart2"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 class="chart-title">Conflicting Documents</h3>
+                <canvas id="positionChart3"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 class="chart-title">Long Queries</h3>
+                <canvas id="positionChart4"></canvas>
+            </div>
+        </div>
+
+        <!-- Detailed Metrics Table -->
+        <div class="table-container">
+            <h3 class="chart-title">Detailed Performance Metrics</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Scenario</th>
+                        <th>Questions</th>
+                        <th>Success Rate</th>
+                        <th>Avg Precision</th>
+                        <th>Precision@3</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                <tr>
+                    <td>Single Document Retrieval</td>
+                    <td>29</td>
+                    <td class="status-poor">65.52%</td>
+                    <td class="status-poor">18.97%</td>
+                    <td class="status-poor">51.72%</td>
+                    <td><span style="color: #ef4444; font-size: 24px;">✗</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Multi-Document Synthesis</td>
+                    <td>10</td>
+                    <td class="status-good">80.00%</td>
+                    <td class="status-good">43.00%</td>
+                    <td class="status-good">70.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Long Query Handling</td>
+                    <td>11</td>
+                    <td class="status-good">90.91%</td>
+                    <td class="status-good">50.00%</td>
+                    <td class="status-good">81.82%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td>No-Document Detection</td>
+                    <td>25</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">100.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Hierarchical Metrics Section -->
+        <div class="table-container">
+            <h3 class="chart-title">📊 Metrics by Hierarchy Level</h3>
+            <div class="hierarchy-selector">
+                <button class="hierarchy-btn active" onclick="switchHierarchy('project')">By Project</button>
+                <button class="hierarchy-btn" onclick="switchHierarchy('activity')">By Activity</button>
+                <button class="hierarchy-btn" onclick="switchHierarchy('doc_type')">By Doc Type</button>
+            </div>
+
+            <div id="project-content" class="hierarchy-content active">
+                <h4 style="margin-bottom: 15px; color: #1f2937;">Project-Level Metrics</h4>
+                
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Questions</th>
+                        <th>Success Rate</th>
+                        <th>Avg Precision</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                <tr>
+                    <td><strong>orp</strong></td>
+                    <td>43</td>
+                    <td class="status-warning">72.09%</td>
+                    <td class="status-warning">31.16%</td>
+                    <td><span style="color: #f59e0b; font-size: 24px;">⚠</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>wms</strong></td>
+                    <td>22</td>
+                    <td class="status-good">86.36%</td>
+                    <td class="status-good">47.73%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                </tbody>
+            </table>
+        
+            </div>
+
+            <div id="activity-content" class="hierarchy-content">
+                <h4 style="margin-bottom: 15px; color: #1f2937;">Activity-Level Metrics</h4>
+                
+            <table>
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Questions</th>
+                        <th>Success Rate</th>
+                        <th>Avg Precision</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                <tr>
+                    <td><strong>orp\orp_portal</strong></td>
+                    <td>12</td>
+                    <td class="status-poor">58.33%</td>
+                    <td class="status-poor">41.67%</td>
+                    <td><span style="color: #ef4444; font-size: 24px;">✗</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_workflow</strong></td>
+                    <td>31</td>
+                    <td class="status-warning">77.42%</td>
+                    <td class="status-warning">27.10%</td>
+                    <td><span style="color: #f59e0b; font-size: 24px;">⚠</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>wms\boc</strong></td>
+                    <td>5</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">50.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>wms\head office</strong></td>
+                    <td>17</td>
+                    <td class="status-good">82.35%</td>
+                    <td class="status-good">47.06%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                </tbody>
+            </table>
+        
+            </div>
+
+            <div id="doc_type-content" class="hierarchy-content">
+                <h4 style="margin-bottom: 15px; color: #1f2937;">Doc Type-Level Metrics</h4>
+                
+            <table>
+                <thead>
+                    <tr>
+                        <th>Doc Type</th>
+                        <th>Questions</th>
+                        <th>Success Rate</th>
+                        <th>Avg Precision</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                <tr>
+                    <td><strong>orp\orp_portal\agile\fsd\01</strong></td>
+                    <td>2</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">55.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_portal\agile\fsd\02</strong></td>
+                    <td>2</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">95.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_portal\agile\fsd\03</strong></td>
+                    <td>3</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">66.67%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_portal\agile\tsd\02</strong></td>
+                    <td>2</td>
+                    <td class="status-poor">0.00%</td>
+                    <td class="status-poor">0.00%</td>
+                    <td><span style="color: #ef4444; font-size: 24px;">✗</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_portal\agile\tsd\03</strong></td>
+                    <td>1</td>
+                    <td class="status-poor">0.00%</td>
+                    <td class="status-poor">0.00%</td>
+                    <td><span style="color: #ef4444; font-size: 24px;">✗</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_portal\brd</strong></td>
+                    <td>2</td>
+                    <td class="status-poor">0.00%</td>
+                    <td class="status-poor">0.00%</td>
+                    <td><span style="color: #ef4444; font-size: 24px;">✗</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_workflow\agile\brd</strong></td>
+                    <td>3</td>
+                    <td class="status-poor">0.00%</td>
+                    <td class="status-poor">0.00%</td>
+                    <td><span style="color: #ef4444; font-size: 24px;">✗</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_workflow\agile\tsd\01</strong></td>
+                    <td>8</td>
+                    <td class="status-warning">75.00%</td>
+                    <td class="status-warning">28.75%</td>
+                    <td><span style="color: #f59e0b; font-size: 24px;">⚠</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_workflow\agile\tsd\02</strong></td>
+                    <td>6</td>
+                    <td class="status-poor">66.67%</td>
+                    <td class="status-poor">26.67%</td>
+                    <td><span style="color: #ef4444; font-size: 24px;">✗</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_workflow\agile\tsd\03</strong></td>
+                    <td>1</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">70.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_workflow\agile\tsd\04</strong></td>
+                    <td>3</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">46.67%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_workflow\agile\tsd\06</strong></td>
+                    <td>4</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">17.50%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_workflow\agile\tsd\07</strong></td>
+                    <td>2</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">25.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>orp\orp_workflow\agile\tsd\08</strong></td>
+                    <td>4</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">30.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>wms\boc\brd\01</strong></td>
+                    <td>2</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">65.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>wms\boc\tsd\01</strong></td>
+                    <td>3</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">40.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>wms\head office\agile\brd\01</strong></td>
+                    <td>2</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">40.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>wms\head office\agile\brd\02</strong></td>
+                    <td>3</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">63.33%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>wms\head office\agile\tsd\01</strong></td>
+                    <td>3</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">70.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>wms\head office\agile\tsd\02</strong></td>
+                    <td>3</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">66.67%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>wms\head office\agile\tsd\03</strong></td>
+                    <td>3</td>
+                    <td class="status-good">100.00%</td>
+                    <td class="status-good">40.00%</td>
+                    <td><span style="color: #10b981; font-size: 24px;">✓</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>wms\head office\tsd\02</strong></td>
+                    <td>2</td>
+                    <td class="status-poor">0.00%</td>
+                    <td class="status-poor">0.00%</td>
+                    <td><span style="color: #ef4444; font-size: 24px;">✗</span></td>
+                </tr>
+            
+                <tr>
+                    <td><strong>wms\head office\tsd\03</strong></td>
+                    <td>1</td>
+                    <td class="status-poor">0.00%</td>
+                    <td class="status-poor">0.00%</td>
+                    <td><span style="color: #ef4444; font-size: 24px;">✗</span></td>
+                </tr>
+            
+                </tbody>
+            </table>
+        
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>RAG Retrieval Evaluation System | Generated on February 03, 2026 at 10:30:12</p>
+        </div>
+    </div>
+
+    <script>
+        // Toggle dropdown function for cards
+        function toggleDropdown(button) {
+            const content = button.nextElementSibling;
+            const isActive = button.classList.contains('active');
+
+            if (isActive) {
+                button.classList.remove('active');
+                content.classList.remove('active');
+            } else {
+                button.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+
+        // Switch hierarchy view
+        function switchHierarchy(hierarchyType) {
+            // Hide all content
+            document.getElementById('project-content').classList.remove('active');
+            document.getElementById('activity-content').classList.remove('active');
+            document.getElementById('doc_type-content').classList.remove('active');
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.hierarchy-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected content
+            const contentId = hierarchyType === 'project' ? 'project-content' :
+                            hierarchyType === 'activity' ? 'activity-content' :
+                            'doc_type-content';
+            document.getElementById(contentId).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Precision Comparison Chart
+        const precisionCtx = document.getElementById('precisionChart').getContext('2d');
+        new Chart(precisionCtx, {
+            type: 'bar',
+            data: {"labels": ["Single Doc", "Multi Doc", "Conflicting Docs", "Long Queries"], "datasets": [{"label": "Average Precision (%)", "data": [18.970000000000002, 43.0, 0, 50.0], "backgroundColor": "rgba(75, 192, 192, 0.6)", "borderColor": "rgba(75, 192, 192, 1)", "borderWidth": 2}, {"label": "Success Rate (%)", "data": [65.52, 80.0, 0, 90.91], "backgroundColor": "rgba(153, 102, 255, 0.6)", "borderColor": "rgba(153, 102, 255, 1)", "borderWidth": 2}]},
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y.toFixed(2) + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Position Distribution Charts
+        const positionCharts = [
+            { id: 'positionChart1', type: 'single_doc' },
+            { id: 'positionChart2', type: 'multi_doc' },
+            { id: 'positionChart3', type: 'conflicting_docs' },
+            { id: 'positionChart4', type: 'long_queries' }
+        ];
+
+        const positionData = {
+            'single_doc': {"labels": ["Position 1", "Position 2", "Position 3", "Position 4", "Position 5", "Position 6", "Position 7", "Position 8", "Position 9", "Position 10"], "datasets": [{"label": "Documents Found", "data": [14, 6, 6, 6, 2, 5, 3, 6, 4, 3], "backgroundColor": "rgba(54, 162, 235, 0.6)", "borderColor": "rgba(54, 162, 235, 1)", "borderWidth": 2}]},
+            'multi_doc': {"labels": ["Position 1", "Position 2", "Position 3", "Position 4", "Position 5", "Position 6", "Position 7", "Position 8", "Position 9", "Position 10"], "datasets": [{"label": "Documents Found", "data": [5, 6, 5, 5, 5, 5, 4, 2, 3, 3], "backgroundColor": "rgba(54, 162, 235, 0.6)", "borderColor": "rgba(54, 162, 235, 1)", "borderWidth": 2}]},
+            'conflicting_docs': [],
+            'long_queries': {"labels": ["Position 1", "Position 2", "Position 3", "Position 4", "Position 5", "Position 6", "Position 7", "Position 8", "Position 9", "Position 10"], "datasets": [{"label": "Documents Found", "data": [6, 5, 6, 4, 5, 5, 6, 5, 5, 7], "backgroundColor": "rgba(54, 162, 235, 0.6)", "borderColor": "rgba(54, 162, 235, 1)", "borderWidth": 2}]}
+        };
+
+        positionCharts.forEach(chart => {
+            const ctx = document.getElementById(chart.id).getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: positionData[chart.type],
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return 'Found: ' + context.parsed.y + ' times';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+        

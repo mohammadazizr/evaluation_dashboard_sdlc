@@ -1,0 +1,640 @@
+{
+  "detailed_results": [
+    {
+      "question": "What is the project code and document type specified in the header of the WFMS Agile Specifications Document dated June 2023?",
+      "test_type": "single_doc",
+      "retrieved_count": 8,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\boc\\tsd\\01\\output.md"
+      ],
+      "document_id": "doc_1",
+      "question_type": "single_doc_factual"
+    },
+    {
+      "question": "Synthesizing the WFMS documents from WMS\\BOC\\TSD\\01\\output.md (v.0.1, June 2023), WMS\\Head Office\\Agile\\TSD\\03\\output.md (v.0.6, June 2023), and WMS\\Head Office\\Agile\\BSD\\02\\output.md (Sprint 5, November 2024), what are the key differences in version numbers, sprint details, and author attributions across these Bank Mandiri WFMS specifications?",
+      "test_type": "multi_doc",
+      "retrieved_count": 6,
+      "expected_count": 3,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\boc\\tsd\\01\\output.md",
+        "wms\\head office\\agile\\tsd\\03\\output.md",
+        "wms\\head office\\agile\\bsd\\02\\output.md"
+      ],
+      "document_id": "doc_1",
+      "question_type": "multi_doc_synthesis"
+    },
+    {
+      "question": "What is the current interest rate for Bank Mandiri's savings accounts as of December 2025?",
+      "test_type": "no_doc",
+      "retrieved_count": 6,
+      "expected_count": 0,
+      "correct_rejection": true,
+      "max_score": 0.0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "document_id": "doc_1",
+      "question_type": "no_doc"
+    },
+    {
+      "question": "Based on WMS\\BOC\\TSD\\01\\output.md (WFMS Project Team, June 2023) and WMS\\Head Office\\Agile\\BSD\\01\\output.md (Dewa Gede Satrya Dhiatmika, 16 Maret 2023), which document indicates an earlier completion date for the WFMS project, and does this create any conflict regarding the timeline for the Workflow for Head Office activity?",
+      "test_type": "conflicting_docs",
+      "retrieved_count": 4,
+      "expected_count": 2,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\boc\\tsd\\01\\output.md",
+        "wms\\head office\\agile\\bsd\\01\\output.md"
+      ],
+      "document_id": "doc_1",
+      "question_type": "conflicting_docs"
+    },
+    {
+      "question": "In the context of the Workflow Management System (WFMS) project as detailed in the Agile Specifications Document v.0.1 from June 2023 with Project Code RCO2301010, considering the preface on functional and non-functional requirements, the document change control table, the table of contents outlining executive summary, business process requirements, and technical specifications, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the baseline for subsequent development activities such as design, customization, and testing, while ensuring compliance with Bank Mandiri's proprietary information policies and alignment with the project charter's agreed scope for application modules supporting business area needs?",
+      "test_type": "long_queries",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\boc\\tsd\\01\\output.md"
+      ],
+      "document_id": "doc_1",
+      "question_type": "long_queries"
+    },
+    {
+      "question": "What is the version number and approval details mentioned in the WFMS Agile Specifications Document v.0.6 from June 2023?",
+      "test_type": "single_doc",
+      "retrieved_count": 7,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\tsd\\03\\output.md"
+      ],
+      "document_id": "doc_2",
+      "question_type": "single_doc_factual"
+    },
+    {
+      "question": "Synthesizing the WFMS documents from WMS\\Head Office\\Agile\\TSD\\03\\output.md (v.0.6, Aqessa Aninda, June 2023), WMS\\BOC\\BSD\\01\\output.md (v.1.0, Team Project, Maret 2023), and WMS\\Head Office\\Agile\\BSD\\01\\output.md (v.0.1, Dewa Gede Satrya Dhiatmika, 16 Maret 2023), what are the common themes in confidentiality clauses, document purposes, and change control tables across these Bank Mandiri WFMS requirements documents?",
+      "test_type": "multi_doc",
+      "retrieved_count": 3,
+      "expected_count": 3,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\tsd\\03\\output.md",
+        "wms\\boc\\bsd\\01\\output.md",
+        "wms\\head office\\agile\\bsd\\01\\output.md"
+      ],
+      "document_id": "doc_2",
+      "question_type": "multi_doc_synthesis"
+    },
+    {
+      "question": "What is the headquarters address of Bank Mandiri in Jakarta?",
+      "test_type": "no_doc",
+      "retrieved_count": 6,
+      "expected_count": 0,
+      "correct_rejection": true,
+      "max_score": 0.0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "document_id": "doc_2",
+      "question_type": "no_doc"
+    },
+    {
+      "question": "Based on WMS\\Head Office\\Agile\\TSD\\03\\output.md (Aqessa Aninda, June 2023) and WMS\\Head Office\\Agile\\BSD\\02\\output.md (Muhammad Ibnu Farchan, November 2024), which document has a later author date, and does this indicate any conflict in the progression of WFMS sprint versions from v.0.6 to Sprint 5?",
+      "test_type": "conflicting_docs",
+      "retrieved_count": 1,
+      "expected_count": 2,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\tsd\\03\\output.md",
+        "wms\\head office\\agile\\bsd\\02\\output.md"
+      ],
+      "document_id": "doc_2",
+      "question_type": "conflicting_docs"
+    },
+    {
+      "question": "In the context of the Workflow Management System (WFMS) project as detailed in the Agile Specifications Document v.0.6 from June 2023 with Project Code RCO2301010, considering the preface on functional and non-functional requirements covering functional, data, security controls, interfAces, general ledger entries, and agreed gaps resolution, the document change control table, the table of contents outlining executive summary, business process requirements, technical specifications, and appendices, the approval table with roles like Approver, Reviewer, and Editor including timestamps such as 12 July 2024 20:32:16 for Dani Supriyadi and 12 July 2024 18:57:49 for Maria Sartika Tambun, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the baseline for subsequent development activities such as design, customization, and testing, while ensuring compliance with Bank Mandiri's proprietary information policies and alignment with the project charter's agreed scope for application modules supporting business area needs?",
+      "test_type": "long_queries",
+      "retrieved_count": 8,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\tsd\\03\\output.md"
+      ],
+      "document_id": "doc_2",
+      "question_type": "long_queries"
+    },
+    {
+      "question": "What is the sprint number and author of the WFMS Requirement Document v.2.0 from November 2024?",
+      "test_type": "single_doc",
+      "retrieved_count": 8,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\bsd\\02\\output.md"
+      ],
+      "document_id": "doc_3",
+      "question_type": "single_doc_factual"
+    },
+    {
+      "question": "Synthesizing the WFMS documents from WMS\\Head Office\\Agile\\BSD\\02\\output.md (Sprint 5, Muhammad Ibnu Farchan, November 2024), WMS\\Head Office\\Agile\\TSD\\02\\output.md (v.0.10, WFMS Project Team, July 2024), and WMS\\Head Office\\Agile\\TSD\\01\\output.md (v.0.10, WFMS Project Team, July 2024), what are the key differences in document types (RD vs SD), version progressions, and date ranges across these Bank Mandiri WFMS specifications?",
+      "test_type": "multi_doc",
+      "retrieved_count": 7,
+      "expected_count": 3,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\bsd\\02\\output.md",
+        "wms\\head office\\agile\\tsd\\02\\output.md",
+        "wms\\head office\\agile\\tsd\\01\\output.md"
+      ],
+      "document_id": "doc_3",
+      "question_type": "multi_doc_synthesis"
+    },
+    {
+      "question": "What is the total number of branches Bank Mandiri has worldwide?",
+      "test_type": "no_doc",
+      "retrieved_count": 2,
+      "expected_count": 0,
+      "correct_rejection": true,
+      "max_score": 0.0,
+      "scores": [
+        0.0,
+        0.0
+      ],
+      "document_id": "doc_3",
+      "question_type": "no_doc"
+    },
+    {
+      "question": "Based on WMS\\Head Office\\Agile\\BSD\\02\\output.md (Sprint 5, November 2024) and WMS\\BOC\\BSD\\01\\output.md (Sprint 1, Maret 2023), which document indicates a later sprint, and does this create any conflict regarding the chronological order of WFMS development phases?",
+      "test_type": "conflicting_docs",
+      "retrieved_count": 6,
+      "expected_count": 2,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\bsd\\02\\output.md",
+        "wms\\boc\\bsd\\01\\output.md"
+      ],
+      "document_id": "doc_3",
+      "question_type": "conflicting_docs"
+    },
+    {
+      "question": "In the context of the Workflow Management System (WFMS) Sprint 5 project as detailed in the Requirement Document v.2.0 from November 2024 with Project Code RCO2301010, considering the preface on business requirements elicited from stakeholders, the purpose of answering what business wants without specifying how, the role as input to FSD and development phases, the document change control table with version 0.1 on 07/11/2024 by Muhammad Ibnu Farchan, the checklist table with columns for NO, CHECKLIST ITEM, KRITERIA, AVAILABILITY (Y/N), and REMARKS, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the foundation for communicating business needs to the technology team, ensuring agreement with stakeholders, and setting forth requirements in the scope of work within the Project Charter?",
+      "test_type": "long_queries",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\bsd\\02\\output.md"
+      ],
+      "document_id": "doc_3",
+      "question_type": "long_queries"
+    },
+    {
+      "question": "What is the sprint number and finalization date of the WFMS Requirement Document v.1.0 from Maret 2023?",
+      "test_type": "single_doc",
+      "retrieved_count": 7,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\boc\\bsd\\01\\output.md"
+      ],
+      "document_id": "doc_4",
+      "question_type": "single_doc_factual"
+    },
+    {
+      "question": "Synthesizing the WFMS documents from WMS\\BOC\\BSD\\01\\output.md (Sprint 1, Team Project, Maret 2023), WMS\\Head Office\\Agile\\BSD\\01\\output.md (Workflow for Head Office, Dewa Gede Satrya Dhiatmika, 16 Maret 2023), and ORP\\ORP_Workflow\\Agile\\BRD\\output.md (ORP 2025, Dimas Ardianto Am, 20 Februari 2025), what are the common elements in confidentiality notices, document purposes, and acceptance authorities across these Bank Mandiri project documents?",
+      "test_type": "multi_doc",
+      "retrieved_count": 10,
+      "expected_count": 3,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\boc\\bsd\\01\\output.md",
+        "wms\\head office\\agile\\bsd\\01\\output.md",
+        "orp\\orp_workflow\\agile\\brd\\output.md"
+      ],
+      "document_id": "doc_4",
+      "question_type": "multi_doc_synthesis"
+    },
+    {
+      "question": "What is the name of Bank Mandiri's CEO?",
+      "test_type": "no_doc",
+      "retrieved_count": 4,
+      "expected_count": 0,
+      "correct_rejection": true,
+      "max_score": 0.0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "document_id": "doc_4",
+      "question_type": "no_doc"
+    },
+    {
+      "question": "Based on WMS\\BOC\\BSD\\01\\output.md (Sprint 1, 29/5/2023) and WMS\\Head Office\\Agile\\BSD\\02\\output.md (Sprint 5, November 2024), which document has an earlier finalization date, and does this indicate any conflict in WFMS sprint sequencing?",
+      "test_type": "conflicting_docs",
+      "retrieved_count": 4,
+      "expected_count": 2,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\boc\\bsd\\01\\output.md",
+        "wms\\head office\\agile\\bsd\\02\\output.md"
+      ],
+      "document_id": "doc_4",
+      "question_type": "conflicting_docs"
+    },
+    {
+      "question": "In the context of the Workflow Management System (WFMS) Sprint 1 project as detailed in the Requirement Document v.1.0 from Maret 2023 with Project Code RCO2301010, considering the preface on business requirements elicited from stakeholders including documentation of needs and expectations, the purpose of BRD answering what business wants without how, the role as input to FSD and development/testing phases, the document change control table with versions 0.1 on 13/03/2023 and 1.0 on 29/5/2023 by Team Project, the checklist table with columns for NO, CHECKLIST ITEM, KRITERIA, AVAILABILITY (Y/N), and REMARKS, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the foundation for communicating business needs to the technology team, ensuring agreement with stakeholders, and setting forth requirements in the scope of work within the Project Charter?",
+      "test_type": "long_queries",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\boc\\bsd\\01\\output.md"
+      ],
+      "document_id": "doc_4",
+      "question_type": "long_queries"
+    },
+    {
+      "question": "What is the activity code and author of the WFMS Workflow for Head Office Requirement Document v.0.1 from 16 Maret 2023?",
+      "test_type": "single_doc",
+      "retrieved_count": 5,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\bsd\\01\\output.md"
+      ],
+      "document_id": "doc_5",
+      "question_type": "single_doc_factual"
+    },
+    {
+      "question": "Synthesizing the WFMS documents from WMS\\Head Office\\Agile\\BSD\\01\\output.md (Workflow for Head Office, Dewa Gede Satrya Dhiatmika, 16 Maret 2023), WMS\\Head Office\\Agile\\TSD\\01\\output.md (v.0.10, WFMS Project Team, July 2024), and ORP\\ORP_Portal\\Agile\\BRD\\output.md (ORP 2025, 12 Februari 2025), what are the key differences in project names, document types, and date ranges across these Bank Mandiri specifications?",
+      "test_type": "multi_doc",
+      "retrieved_count": 5,
+      "expected_count": 3,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\bsd\\01\\output.md",
+        "wms\\head office\\agile\\tsd\\01\\output.md",
+        "orp\\orp_portal\\agile\\brd\\output.md"
+      ],
+      "document_id": "doc_5",
+      "question_type": "multi_doc_synthesis"
+    },
+    {
+      "question": "What is the market capitalization of Bank Mandiri?",
+      "test_type": "no_doc",
+      "retrieved_count": 5,
+      "expected_count": 0,
+      "correct_rejection": true,
+      "max_score": 0.0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "document_id": "doc_5",
+      "question_type": "no_doc"
+    },
+    {
+      "question": "Based on WMS\\Head Office\\Agile\\BSD\\01\\output.md (16 Maret 2023) and WMS\\BOC\\BSD\\01\\output.md (13/03/2023 and 29/5/2023), which document has the earliest draft date, and does this create any conflict regarding WFMS requirement documentation timelines?",
+      "test_type": "conflicting_docs",
+      "retrieved_count": 4,
+      "expected_count": 2,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\bsd\\01\\output.md",
+        "wms\\boc\\bsd\\01\\output.md"
+      ],
+      "document_id": "doc_5",
+      "question_type": "conflicting_docs"
+    },
+    {
+      "question": "In the context of the Workflow Management System (WFMS) Workflow for Head Office project as detailed in the Requirement Document v.0.1 from 16 Maret 2023 with Project Code RCO2301010 and Activity Code RCO23010123A, considering the preface on business requirements elicited from stakeholders including documentation of needs and expectations, the purpose of BRD answering what business wants without how, the role as input to FSD and development/testing phases, the document change control table with version 0.1 by Dewa Gede Satrya Dhiatmika, the checklist table with items like BACKGROUND, OBJECTIVES, STAKEHOLDER, SOLUTION OVERVIEW, and others, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the foundation for communicating business needs to the technology team, ensuring agreement with stakeholders, and setting forth requirements in the scope of work within the Project Charter?",
+      "test_type": "long_queries",
+      "retrieved_count": 8,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\bsd\\01\\output.md"
+      ],
+      "document_id": "doc_5",
+      "question_type": "long_queries"
+    },
+    {
+      "question": "What is the document date and status of the WFMS Agile Specifications Document v.0.10 from July 2024?",
+      "test_type": "single_doc",
+      "retrieved_count": 5,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\tsd\\02\\output.md"
+      ],
+      "document_id": "doc_6",
+      "question_type": "single_doc_factual"
+    },
+    {
+      "question": "Synthesizing the WFMS documents from WMS\\Head Office\\Agile\\TSD\\02\\output.md (v.0.10, July 2024), WMS\\Head Office\\Agile\\TSD\\01\\output.md (v.0.10, July 2024), and ORP\\ORP_Workflow\\Agile\\TSD\\12\\output.md (ORP 2025, July 2024), what are the common themes in document purposes, confidentiality clauses, and version details across these Bank Mandiri specifications?",
+      "test_type": "multi_doc",
+      "retrieved_count": 8,
+      "expected_count": 3,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\tsd\\02\\output.md",
+        "wms\\head office\\agile\\tsd\\01\\output.md",
+        "orp\\orp_workflow\\agile\\tsd\\12\\output.md"
+      ],
+      "document_id": "doc_6",
+      "question_type": "multi_doc_synthesis"
+    },
+    {
+      "question": "What is the annual revenue of Bank Mandiri for 2024?",
+      "test_type": "no_doc",
+      "retrieved_count": 5,
+      "expected_count": 0,
+      "correct_rejection": true,
+      "max_score": 0.0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "document_id": "doc_6",
+      "question_type": "no_doc"
+    },
+    {
+      "question": "Based on WMS\\Head Office\\Agile\\TSD\\02\\output.md (July 2024) and WMS\\Head Office\\Agile\\BSD\\02\\output.md (November 2024), which document has an earlier date, and does this indicate any conflict in WFMS document sequencing?",
+      "test_type": "conflicting_docs",
+      "retrieved_count": 1,
+      "expected_count": 2,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\tsd\\02\\output.md",
+        "wms\\head office\\agile\\bsd\\02\\output.md"
+      ],
+      "document_id": "doc_6",
+      "question_type": "conflicting_docs"
+    },
+    {
+      "question": "In the context of the Workflow Management System (WFMS) project as detailed in the Agile Specifications Document v.0.10 from July 2024 with Project Code RCO2301010, considering the preface on functional and non-functional requirements covering functional, data, security controls, interfAces, general ledger entries, and agreed gaps resolution, the document change control table with version 0.1 in Juni 2024, the table of contents outlining executive summary, business process requirements, technical specifications, and appendices, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the baseline for subsequent development activities such as design, customization, and testing, while ensuring compliance with Bank Mandiri's proprietary information policies and alignment with the project charter's agreed scope for application modules supporting business area needs?",
+      "test_type": "long_queries",
+      "retrieved_count": 10,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\tsd\\02\\output.md"
+      ],
+      "document_id": "doc_6",
+      "question_type": "long_queries"
+    },
+    {
+      "question": "What is the change control summary for the WFMS Agile Specifications Document v.0.10 from July 2024?",
+      "test_type": "single_doc",
+      "retrieved_count": 7,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\tsd\\01\\output.md"
+      ],
+      "document_id": "doc_7",
+      "question_type": "single_doc_factual"
+    },
+    {
+      "question": "Synthesizing the WFMS documents from WMS\\Head Office\\Agile\\TSD\\01\\output.md (v.0.10, July 2024), ORP\\ORP_Workflow\\Agile\\TSD\\09\\output.md (ORP 2025, Oktober 2025), and ORP\\ORP_Workflow\\Agile\\TSD\\11\\output.md (ORP 2025, Februari 2025), what are the key differences in project codes, document dates, and author details across these Bank Mandiri specifications?",
+      "test_type": "multi_doc",
+      "retrieved_count": 2,
+      "expected_count": 3,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\tsd\\01\\output.md",
+        "orp\\orp_workflow\\agile\\tsd\\09\\output.md",
+        "orp\\orp_workflow\\agile\\tsd\\11\\output.md"
+      ],
+      "document_id": "doc_7",
+      "question_type": "multi_doc_synthesis"
+    },
+    {
+      "question": "What is the number of employees at Bank Mandiri?",
+      "test_type": "no_doc",
+      "retrieved_count": 8,
+      "expected_count": 0,
+      "correct_rejection": true,
+      "max_score": 0.0,
+      "scores": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "document_id": "doc_7",
+      "question_type": "no_doc"
+    },
+    {
+      "question": "Based on WMS\\Head Office\\Agile\\TSD\\01\\output.md (July 2024) and WMS\\Head Office\\Agile\\TSD\\02\\output.md (July 2024), which document has a different page count in the header, and does this indicate any conflict in WFMS document consistency?",
+      "test_type": "conflicting_docs",
+      "retrieved_count": 0,
+      "expected_count": 2,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\tsd\\01\\output.md",
+        "wms\\head office\\agile\\tsd\\02\\output.md"
+      ],
+      "document_id": "doc_7",
+      "question_type": "conflicting_docs"
+    },
+    {
+      "question": "In the context of the Workflow Management System (WFMS) project as detailed in the Agile Specifications Document v.0.10 from July 2024 with Project Code RCO2301010, considering the preface on functional and non-functional requirements covering functional, data, security controls, interfAces, general ledger entries, and agreed gaps resolution, the document change control table with version 0.1 in Juni 2024 for DSR/GSR Sprint 4, the table of contents outlining executive summary, business process requirements, technical specifications, and appendices, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the baseline for subsequent development activities such as design, customization, and testing, while ensuring compliance with Bank Mandiri's proprietary information policies and alignment with the project charter's agreed scope for application modules supporting business area needs?",
+      "test_type": "long_queries",
+      "retrieved_count": 9,
+      "expected_count": 1,
+      "positions_found": [],
+      "correct_chunks": 0,
+      "precision": 0.0,
+      "all_docs_found": false,
+      "retrieved_expected_docs": [],
+      "missing_docs": [
+        "wms\\head office\\agile\\tsd\\01\\output.md"
+      ],
+      "document_id": "doc_7",
+      "question_type": "long_queries"
+    }
+  ],
+  "aggregate_metrics": {
+    "single_doc": {
+      "total_questions": 7,
+      "average_precision": 0.0,
+      "success_rate": 0.0,
+      "position_distribution": {}
+    },
+    "multi_doc": {
+      "total_questions": 7,
+      "average_precision": 0.0,
+      "success_rate": 0.0,
+      "position_distribution": {}
+    },
+    "conflicting_docs": {
+      "total_questions": 7,
+      "average_precision": 0.0,
+      "success_rate": 0.0,
+      "position_distribution": {}
+    },
+    "long_queries": {
+      "total_questions": 7,
+      "average_precision": 0.0,
+      "success_rate": 0.0,
+      "position_distribution": {}
+    },
+    "no_doc": {
+      "total_questions": 7,
+      "correct_rejection_rate": 1.0,
+      "false_positive_rate": 0.0,
+      "correct_rejections": 7,
+      "false_positives": 0
+    },
+    "overall": {
+      "total_retrieval_questions": 28,
+      "average_precision": 0.0,
+      "success_rate": 0.0
+    }
+  },
+  "configuration": {
+    "k": 10,
+    "confidence_threshold": 0.7
+  },
+  "evaluation_summary": {
+    "total_questions_in_ground_truth": 35,
+    "questions_evaluated": 35,
+    "questions_missing": 0
+  }
+}

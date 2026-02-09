@@ -1,0 +1,9 @@
+{
+  "questions": {
+    "doc_1_single_doc_factual": {
+      "question": "What are the fund allocation options available in the WMS BOC Transaksi Internal process?",
+      "expected_documents": ["WMS\\BOC\\BRD\\01\\output.md"],
+      "test_type": "single_doc"
+    }
+}
+}

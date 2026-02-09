@@ -1,0 +1,55 @@
+{
+  "kode": {
+    "path": {
+      "ORP\\ORP_Workflow\\TSD": 1
+    },
+    "total_count": 1
+  },
+  "validasi": {
+    "path": {
+      "ORP\\ORP_Portal\\TSD": 1,
+      "ORP\\ORP_Workflow\\TSD": 1
+    },
+    "total_count": 2
+  },
+  "sistem": {
+    "path": {
+      "ORP\\ORP_Portal\\TSD": 1,
+      "WMS\\BOC\\TSD": 1,
+      "WMS\\Head Office\\TSD": 1,
+      "WMS\\Head Office\\BRD": 1,
+      "ORP\\ORP_Workflow\\TSD": 1,
+      "ORP\\ORP_Portal\\BRD": 1
+    },
+    "total_count": 6
+  },
+  "proses": {
+    "path": {
+      "ORP\\ORP_Portal\\TSD": 1,
+      "ORP\\ORP_Workflow\\BRD": 1,
+      "WMS\\Head Office\\BRD": 1,
+      "WMS\\BOC\\BRD": 1,
+      "ORP\\ORP_Workflow\\TSD": 1,
+      "ORP\\ORP_Portal\\BRD": 1
+    },
+    "total_count": 6
+  },
+  "opening": {
+    "path": {
+      "ORP\\ORP_Workflow\\TSD": 1
+    },
+    "total_count": 1
+  },
+  "data": {
+    "path": {
+      "ORP\\ORP_Portal\\TSD": 1,
+      "ORP\\ORP_Workflow\\BRD": 1,
+      "WMS\\BOC\\TSD": 1,
+      "WMS\\Head Office\\TSD": 1,
+      "WMS\\Head Office\\BRD": 1,
+      "ORP\\ORP_Workflow\\TSD": 1,
+      "ORP\\ORP_Portal\\BRD": 1
+    },
+    "total_count": 7
+  }
+}

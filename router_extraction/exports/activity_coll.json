@@ -1,0 +1,131 @@
+[
+  {
+    "id": "415e1769-d6d2-40ef-95e7-5274f48a24cb",
+    "payload": {
+      "uuid": "415e1769-d6d2-40ef-95e7-5274f48a24cb",
+      "activity_name": "ORP Workflow",
+      "parent_project_uuid": "8d6e2f02-9df6-43ef-aa29-4a48d44b4c0b",
+      "parent_project_name": "Operation Request Portal 2025",
+      "summary": "Project Method: Agile\n\n## Activity Overview  \n- **Name**: ORP Workflow  \n- **Goal**: Centralize and automate operational workflows to eliminate manual processes in business units, improving efficiency, compliance, and customer experience.  \n- **Key Deliverables**: Workflow automation engine, bulk account opening, SSO integration, STP processing, centralized custody operations.\n\n## Document Types Summary  \n- **Business Requirements (BRD)**: The activity aims to centralize and automate BOC and custody operations, achieving Zero Operations in business units by digitizing workflows, enabling STP, and integrating with eMAS, BaNCs, and SAP FICO. Key benefits include cost reduction, improved compliance, and faster service delivery.  \n- **Product Requirements (PRD)**: Not Provided  \n- **Functional Specification (FSD)**: Not Provided  \n- **Technical Specification (TSD)**: The Pega-based Workflow Management System (WFMS) supports end-to-end case lifecycle management with modules for bulk account opening, auto debit, upfront money requests, and KCM onboarding. It includes data, host, fraud, and CIF validations, role-based routing, and Kanban-style UI. (Surrounding: BOC, Custody, Wholesale Operations)  \n- **Technical Environment (TED)**: Not Provided  \n- **Change Request (CR)**: Not Provided  \n- **Application Improvement (AI)**: Not Provided\n\n## Surrounding Organizations  \n- **List of all Surroundings**: BOC, Custody, Wholesale Operations, Branch/Unit Staff, Operations Leadership\n\n## Alignment Check  \n- **Alignment**: Partially Aligned  \n- **Critical Gaps**:  \n  1. PRD and FSD missing — functional scope and user requirements not formally defined despite technical implementation underway.  \n  2. SAP FICO integration for GL posting and reversals deferred; inconsistent EMAS integration descriptions (SOA vs. FTP) create ambiguity.\n\n## Key Details  \n- **Main Integrations**: eMAS (SOA/FTP), DMS (Documentum), SI, MFT, SAP FICO, CMS, AFAS, SAMS  \n- **Top Risks**: High integration complexity with external systems; incomplete error handling and recovery logic  \n- **Readiness**: Needs Work\n\n## To Get Started  \n- **Prerequisites**: Finalize PRD/FSD to align business and technical specs; resolve integration inconsistencies (eMAS, SAP FICO)\n\n## Keywords (Consolidated from all available document types)  \norp, boc, custody, stp, sso, parameter automation, operational excellence, wholesale, onboarding, workflow automation, centralized operations, agile, wfms, pega, bulk account opening, emas, dms, si, sap fico, mft, cto-usermapping, case lifecycle, data validation, host validation, soa, jwt, https, aes encryption, approval workflow, reversal logic, mdm, cms, afas, sams, fee interbranch, uang muka, product code change, kcm onboarding",
+      "children_doc_type_uuids": [
+        "77ca078b-c6f2-4105-85ee-6e75da8e033e",
+        "1e13800c-104b-47d4-b60a-74ae4a393cca"
+      ]
+    }
+  },
+  {
+    "id": "6bd1cc37-b61b-4525-b1f8-2571e7ba1db6",
+    "payload": {
+      "uuid": "6bd1cc37-b61b-4525-b1f8-2571e7ba1db6",
+      "activity_name": "Livin Merchant Release 3.1",
+      "parent_project_uuid": "8b61d448-524e-4005-b3a7-d30d2c3a8f8a",
+      "parent_project_name": "Merchant App",
+      "summary": "Project Method: Waterfall\n\n## Activity Overview  \n- **Name**: Livin Merchant Release 3.1  \n- **Goal**: Enhance the Livin Merchant platform for UMKM merchants by enabling scoring for teaser lending and KUM-TP financing, secure file transfer, KIOSK transaction reconciliation, CASA balance validation, and enriched settlement processing.  \n- **Key Deliverables**: Merchant scoring engine, whitelist validation, IRS reconciliation module, secure MFT/SFTP file transfer, Open API-based CASA inquiry, enriched settlement with banner flagging.\n\n## Document Types Summary  \n- **Business Requirements (BRD)**: Not Provided  \n- **Product Requirements (PRD)**: Not Provided  \n- **Functional Specification (FSD)**: Enhances Livin Merchant with merchant scoring (daily/monthly), whitelist validation, secure file transfer, KIOSK transaction reconciliation, CASA balance inquiry, and enriched settlement processing. Banner logic displays \"Hide\", \"Progress\", or \"Ajukan\" based on eligibility. (Surrounding: UMKM Merchant Platform, Teaser Lending, KUM-TP Financing)  \n- **Technical Specification (TSD)**: Implements IRS reconciliation engine, wrapper services for CASA inquiry, Big Data scoring logic, and MFT/Open API integrations. Uses batch and real-time processing with SOA, eMAS/TCP, and OAuth 2.0. (Surrounding: UMKM Merchant Platform, Teaser Lending, KUM-TP Financing)  \n- **Technical Environment (TED)**: Not Provided  \n- **Change Request (CR)**: Not Provided  \n- **Application Improvement (AI)**: Not Provided  \n\n## Surrounding Organizations  \n- **List of all Surroundings**: UMKM Merchant Platform, Teaser Lending, KUM-TP Financing, EDA (Big Data), LOS (Pega), MFT, SFTP, MTI, IRS, Mandiri HOST, Open API, Host Teller, IRIS, SOA Corebank, LDAP, SMR, eMAS, B24, GLRECON, DWH\n\n## Alignment Check  \n- **Alignment**: Partially Aligned  \n- **Critical Gaps**:  \n  1. No clear integration between scoring, settlement, and reconciliation modules despite shared dependencies.  \n  2. Banner flagging logic not extended to KIOSK or settlement features, limiting consistent user experience.\n\n## Key Details  \n- **Main Integrations**: EDA, LOS, MFT, SFTP, MTI, IRS, Mandiri HOST, Open API, Host Teller, IRIS, eMAS, SOA Corebank, LDAP, AD  \n- **Top Risks**:  \n  1. Data alignment complexity due to nominal scaling (÷100) in reconciliation.  \n  2. Dependency on external systems (eMAS, LOS, EDA) with potential latency or availability impact.  \n- **Readiness**: Needs Work\n\n## To Get Started  \n- **Prerequisites**: Finalized BRD/PRD documentation, unified identity model across authentication mechanisms (LDAP/AD/OAuth).\n\n## Keywords (Consolidated from all available document types)  \nlivin merchant, big data, mft, scoring, whitelist, sftp, teaser lending, kum-tp, reconciliation, eda, los, kiosk, glrecon, mti, casa inquiry, host teller, iris, transaction code 8163, banner flag, api integration, settlement, transaction matching, open items, ldap, smr, citynet reconciliation, oauth 2.0, jwt access token, tls 1.2, wrapper service, batch job, api gateway, user eligibility, rac rules, emas, tcp integration, data reconciliation",
+      "children_doc_type_uuids": [
+        "ed96b950-b712-4365-8bb2-22c615b7b486",
+        "e8530266-5e57-411a-bb4f-744f4525b426"
+      ]
+    }
+  },
+  {
+    "id": "7e061aa1-dca5-460a-aaca-673a1088a193",
+    "payload": {
+      "uuid": "7e061aa1-dca5-460a-aaca-673a1088a193",
+      "activity_name": "none",
+      "parent_project_uuid": "75f0b59f-f005-4bb4-8a1b-aa9ff9daa07f",
+      "parent_project_name": "AI Aplikasi Livin' Merchant - Beta Environment",
+      "summary": "",
+      "children_doc_type_uuids": [
+        "b3f86e3a-bb00-450e-a0d3-c8fd3289d359",
+        "4475c42a-26fb-4193-a83f-98ee49d5765a",
+        "e0c602aa-daa4-42c2-b02a-2fc47e3a64b5",
+        "985ee5e3-ab50-430b-9164-c7e40c5677ff"
+      ]
+    }
+  },
+  {
+    "id": "93369ef6-520c-445d-9fb3-8c81c3459d71",
+    "payload": {
+      "uuid": "93369ef6-520c-445d-9fb3-8c81c3459d71",
+      "activity_name": "Arsitektur Improvement Aplikasi Livin' Merchant 2025",
+      "parent_project_uuid": "6a75d7c1-50d0-4962-8816-dd1c676e0d4c",
+      "parent_project_name": "Arsitektur Improvement Aplikasi Livin' Merchant",
+      "summary": "Project Method: Waterfall\n\n## Activity Overview  \n- **Name**: Arsitektur Improvement Aplikasi Livin' Merchant 2025  \n- **Goal**: Migrate Livin' Merchant API hosting from Azure cloud to Bank Mandiri’s on-premise environment integrated with Internal SOA Biru API Gateway to enhance security, control, and internal system interoperability.  \n- **Key Deliverables**: On-premise API hosting, Integration with SOA Biru API Gateway, MFT repointing, Host Teller IP allowance, Secure financial API communication (2FA + TLS 1.2+)  \n\n## Document Types Summary  \n- **Business Requirements (BRD)**: Not Provided  \n- **Product Requirements (PRD)**: Not Provided  \n- **Functional Specification (FSD)**: Migration of Livin' Merchant to on-premise hosting with integration to SOA Biru API Gateway and MFT; includes IP allowance on Host Teller and secure financial API access. (Surrounding: Livin' Merchant, SOA Biru, MFT, Host Teller)  \n- **Technical Specification (TSD)**: System leverages Internal SOA Blue API Gateway, MDM, Zoloz, CIS/Dukcapil, LOS, and CoreBank for merchant onboarding and transaction processing with NPWP/NIK validation and fund transfer overbooking control. (Surrounding: Livin' Merchant, SOA Biru, CoreBank, MDM, Zoloz)  \n- **Technical Environment (TED)**: Not Provided  \n- **Change Request (CR)**: Not Provided  \n- **Application Improvement (AI)**: Not Provided  \n\n## Surrounding Organizations  \n- **List of all Surroundings**: Livin' Merchant, SOA Biru, MFT, Host Teller, LOS, SCM, MDM, Zoloz, CIS (Dukcapil), DJP, eMAS, RVA, CoreBank (IS CoreBank), Omni, SMS Gateway, Open API, Splunk, Big Data  \n\n## Alignment Check  \n- **Alignment**: Partially Aligned  \n- **Critical Gaps**:  \n  1. Missing BRD and PRD – business objectives and product scope not formally defined.  \n  2. No rollback plan or risk mitigation strategy documented in FSD despite system-critical migration.  \n\n## Key Details  \n- **Main Integrations**: SOA Biru, MFT, Host Teller, LOS, SCM, MDM, Zoloz, CIS, CoreBank, OpenAPI  \n- **Top Risks**:  \n  1. Migration failure due to lack of rollback plan  \n  2. Security non-compliance if 2FA or TLS 1.2+ not fully enforced  \n- **Readiness**: Needs Work  \n\n## To Get Started  \n- **Prerequisites**:  \n  1. Finalize BRD/PRD to establish business and product baseline  \n  2. Define risk mitigation and rollback strategy for on-premise migration  \n\n## Keywords (Consolidated from all available document types)  \nlivin merchant, api gateway, soa biru, on premise, internal hosting, mft, host teller, api integration, merchant umkm, gateway internal, tls 1.2, 2fa, financial api, system migration, bank mandiri, mdm, zoloz, dukcapil, rva, scm, los, sms gateway, npwp, casa, fund transfer overbooking, jwt, api key, cis, djp, emas, corebank, omni, https, openapi, request throttling",
+      "children_doc_type_uuids": [
+        "4199f164-08ea-4346-bee6-e3d2a7828aeb",
+        "d3df99c0-926a-477c-a5a2-99c1c1aa8962"
+      ]
+    }
+  },
+  {
+    "id": "b601a6ce-d091-4f45-9c77-3a32427eede0",
+    "payload": {
+      "uuid": "b601a6ce-d091-4f45-9c77-3a32427eede0",
+      "activity_name": "Workflow For Business Operation Center (BOC)",
+      "parent_project_uuid": "54877869-adf6-40e0-b42d-a7e7b5367782",
+      "parent_project_name": "Workflow Management System",
+      "summary": "Project Method: Agile\n\n## Activity Overview  \n- **Name**: Workflow For Business Operation Center (BOC)  \n- **Goal**: Achieve end-to-end digital workflow automation for internal transactions, IT services, and general orders to improve operational efficiency and transparency across BOC and branches.  \n- **Key Deliverables**: Unified Workflow Management System (WFMS), multi-level approval workflows, integration with SAP FICO and Documentum, SLA tracking, configurable process engine.\n\n## Document Types Summary  \n- **Business Requirements (BRD)**: The initiative addresses fragmented and manual processes by implementing a unified Workflow Management System to automate internal transactions, IT services, and general orders. Key objectives include integration with SAP FICO and Documentum, real-time monitoring, and improved operational efficiency.  \n- **Product Requirements (PRD)**: Not Provided  \n- **Functional Specification (FSD)**: Not Provided  \n- **Technical Specification (TSD)**: The WFMS (v0.1) uses a four-stage workflow with conditional routing, multi-level approvals (SPV 1/2, optional third), SLA tracking, and audit logging. It supports process configurability and system/manual decision flags. (Surrounding: Business Operation Center, Branch Operations)  \n- **Technical Environment (TED)**: Not Provided  \n- **Change Request (CR)**: Not Provided  \n- **Application Improvement (AI)**: Not Provided\n\n## Surrounding Organizations  \n- **List of all Surroundings**: Business Operation Center (BOC), Branch/Unit Kerja, IT Service Units\n\n## Alignment Check  \n- **Alignment**: Partially Aligned  \n- **Critical Gaps**: 1. Missing PRD and FSD create uncertainty in product and functional scope. 2. Incomplete logic for \"Alokasi Pembayaran ke GNC\" impacts vendor payment module readiness.\n\n## Key Details  \n- **Main Integrations**: SAP FICO, Documentum, BIX, ICS, E-MAS, CRM/CES, BI SILK, EMAIL, WA Gateway  \n- **Top Risks**: High integration complexity with core systems; delays due to unclear payment allocation logic  \n- **Readiness**: Needs Work\n\n## To Get Started  \n- **Prerequisites**: Finalize PRD/FSD documentation; clarify payment allocation specifications with SAP team\n\n## Keywords (Consolidated from all available document types)  \nworkflow, boc, internal transaction, it service, general order, sap fico, documentum, approval, digitalization, operational efficiency, pega, data entry, rest api, sla, conditional routing, jwt, https, audit trail, multi-level approval, integration, config process, tms, dms, api security",
+      "children_doc_type_uuids": [
+        "da44cff9-9538-4268-bf2c-a15ebd6b9603",
+        "6ea3315e-8b1a-470c-b218-b19460b107d6"
+      ]
+    }
+  },
+  {
+    "id": "b60a4181-7a51-422b-8286-12a0bc53438a",
+    "payload": {
+      "uuid": "b60a4181-7a51-422b-8286-12a0bc53438a",
+      "activity_name": "ORP Portal",
+      "parent_project_uuid": "8d6e2f02-9df6-43ef-aa29-4a48d44b4c0b",
+      "parent_project_name": "Operation Request Portal 2025",
+      "summary": "Project Method: Agile\n\n## Activity Overview\n- **Name**: ORP Portal\n- **Goal**: Centralize and automate operational support workflows to eliminate manual processes, improve service delivery speed, and enable Zero Operations at Business Units.\n- **Key Deliverables**: Workflow automation for Powercash/Powerbill, STP for bulk operations, SSO integration, parameter updates, and ATM/EDC onboarding.\n\n## Document Types Summary\n- **Business Requirements (BRD)**: Addresses fragmented, manual operations by centralizing workflows for BOC, account management, parameter updates, and ATM/EDC onboarding. Aims to achieve Zero Operations at Business Units with benefits in efficiency, control, and cost. ORP enables digitization, automation, and SSO across 8+ systems.  \n- **Product Requirements (PRD)**: Not Provided\n- **Functional Specification (FSD)**: Automates Powercash correction, transfer, inquiry, acceleration, and Powerbill registration/cancellation via ICS module, integrated with ORP, CIS, MICS, and Reborn. Supports end-to-end status lifecycle and TC posting with data verification and approval rules. (Surrounding: ICS, CIS, MICS, OA, Reborn)\n- **Technical Specification (TSD)**: ORP acts as orchestration layer using SOA/API400 for integration with ICS, Host, eMAS, BI FAST, and BPS 2.0. Uses RPA for SFTP file processing and Red Hat SSO/Keycloak for authentication. Supports real-time and batch processing with validation rules and dynamic routing. (Surrounding: ORP, CIS, ICS, eMAS, BI FAST)\n- **Technical Environment (TED)**: Not Provided\n- **Change Request (CR)**: Not Provided\n- **Application Improvement (AI)**: Not Provided\n\n## Surrounding Organizations\n- **List of all Surroundings**: ORP, ICS, CIS, MICS, OA, Reborn/Rebom, eMAS, Host, BI FAST, BPS 2.0, DWH, IRS, MCAP, CMS, DMS, CBAS\n\n## Alignment Check\n- **Alignment**: Partially Aligned\n- **Critical Gaps**: 1. PRD missing – functional and technical specs lack product-level traceability. 2. Security risk: full credit card numbers exposed in UI. 3. Data mismatch risks between OA, ICS, MICS due to manual reformatting and lack of real-time sync.\n\n## Key Details\n- **Main Integrations**: ICS, CIS, MICS, eMAS, BI FAST, BPS 2.0, OA, Reborn, SSO (Keycloak), RPA\n- **Top Risks**: 1. RPA as single point of failure with no recovery mechanism. 2. Undefined error handling for ICS/Host service dependencies.\n- **Readiness**: Needs Work\n\n## To Get Started\n- **Prerequisites**: 1. Finalize PRD to align business and technical scope. 2. Address UI security flaw (credit card exposure).\n\n## Keywords (Consolidated from all available document types)\norp, boc, workflow automation, parameter update, sso, onboarding, atm, edc, bulk account opening, account maintenance, stp, digitization, operational efficiency, centralized workflow, powercash, ics, cis, mics, oa, reborn, percepatan pelunasan, koreksi, transfer, powerbill, registrasi, pembatalan, tc 601, tc 162, tc 163, stop code, eod, status lifecycle, data verification, host to host, rpa, data mismatch, manual reformatting, so eko, sh eko, ccg, ecopelaksana, cardholder, api400, soa, bi fast, bps 2.0, emas, host, irs, dwh, jwt, openid connect, ldap, ad, keycloak, red hat sso, ssl offload, retry logic, credit card parameter, security risk, integration, batch processing, real-time processing",
+      "children_doc_type_uuids": [
+        "9e48efde-b454-4180-a70b-fcc40f038fef",
+        "37e3525e-577c-4a80-9ffb-27b7c38f1096",
+        "38f076b9-6ac0-462e-9b28-12d9bacf21e8"
+      ]
+    }
+  },
+  {
+    "id": "dd3bdfcd-6ffd-42a0-89de-0e7265e41cab",
+    "payload": {
+      "uuid": "dd3bdfcd-6ffd-42a0-89de-0e7265e41cab",
+      "activity_name": "Workflow For Head Office",
+      "parent_project_uuid": "54877869-adf6-40e0-b42d-a7e7b5367782",
+      "parent_project_name": "Workflow Management System",
+      "summary": "",
+      "children_doc_type_uuids": [
+        "05d66f59-2717-414a-b372-1e997c27ba1f",
+        "782f52de-7045-404f-a2b6-1c316ce35955"
+      ]
+    }
+  },
+  {
+    "id": "e028ab61-10b9-4ec7-a328-538564352038",
+    "payload": {
+      "uuid": "e028ab61-10b9-4ec7-a328-538564352038",
+      "activity_name": "none",
+      "parent_project_uuid": "5e9320d7-4570-4205-b3e8-e728231a7a03",
+      "parent_project_name": "CR Perbaikan Remark Settlement QRIS Livin' Merchant",
+      "summary": "",
+      "children_doc_type_uuids": [
+        "def7c9cc-7eff-4a46-be10-530f11d8d616",
+        "0f4d4923-f7f4-4e2b-979a-0281c6de8289"
+      ]
+    }
+  },
+  {
+    "id": "e264cc65-8e9d-4656-9e3c-192174e0b8aa",
+    "payload": {
+      "uuid": "e264cc65-8e9d-4656-9e3c-192174e0b8aa",
+      "activity_name": "Merchant App 2025",
+      "parent_project_uuid": "d6498142-5317-44ca-ac7d-961a7409a0ed",
+      "parent_project_name": "Merchant App 2025",
+      "summary": "Project Method: Waterfall\n\n## Activity Overview  \n- **Name**: Merchant App 2025  \n- **Goal**: Enhance Livin Merchant with automated settlement, fraud detection, loan verification, and revenue sharing reconciliation to improve operational efficiency, risk control, and merchant engagement.  \n- **Key Deliverables**: Automated fraud checks, loan writeoff/collectability validation, RPA-driven merchant suspension, file-based settlement processing, revenue sharing reconciliation.\n\n## Document Types Summary  \n- **Business Requirements (BRD)**: Not Provided  \n- **Product Requirements (PRD)**: Not Provided  \n- **Functional Specification (FSD)**: Enhances Livin Merchant with real-time/batch fraud checks (AFAS/Splunk), loan writeoff (kotran 4099) and collectability checks (kotran 4654), automated merchant suspension via RPA, and bulk loan notifications via SFTP. (Surrounding: Livin Merchant, AFAS, eMAS Loan, SOA Biru, RPA)  \n- **Technical Specification (TSD)**: Implements orchestration via API Gateway (SOA Biru), RPA (UiPath) for automated suspension, batch settlement via MFT/SFTP, and DB-to-DB reconciliation; enforces HMAC-SHA256, TLS 1.2+, AES-256 encryption. (Surrounding: Livin Merchant, eMAS, MTI, AFAS, Back Office Livin Merchant)  \n- **Technical Environment (TED)**: Not Provided  \n- **Change Request (CR)**: Not Provided  \n- **Application Improvement (AI)**: Not Provided  \n\n## Surrounding Organizations  \n- **List of all Surroundings**: Livin Merchant, AFAS, eMAS (Core Banking & Loan), SOA Biru, RPA (UiPath), Splunk, MFT, SFTP, IRS, XLS, MTI, GLRECON, Back Office Livin Merchant, CoreBank, DWH, E-Wallet/Telco/VISA/Mastercard\n\n## Alignment Check  \n- **Alignment**: Partially Aligned  \n- **Critical Gaps**:  \n  1. Inconsistent transaction codes (kotran 8163 vs. 4099/4654) across documents; impacts loan and disbursement processing.  \n  2. Unresolved dependency on external MTI development for settlement module with no mitigation plan.\n\n## Key Details  \n- **Main Integrations**: AFAS, eMAS, SOA Biru, MTI, MFT/SFTP, RPA (UiPath), Splunk, IRS, XLS, GLRECON  \n- **Top Risks**: RPA UI fragility and hardcoded credentials in eMAS integration; non-compliance with OAuth 2.0 and 2FA standards  \n- **Readiness**: Needs Work\n\n## To Get Started  \n- **Prerequisites**: Clarify transaction code standards (kotran), confirm MTI delivery timeline\n\n## Keywords (Consolidated from all available document types)  \nsettlement, repayment, mft, soa biru, emas, afas, fraud check, rpa, uipath, splunk, revenue sharing, reconciliation, glrecon, loyalty, livin merchant, api gateway, sftp, onboarding, card dongle, loan inquiry, automated suspension, hold amount, xls, iris, mtidata, kotran, cdd, cif, campaign, edc, kafka, optic, irs, real-time processing, batch processing, hmac-sha256, tls 1.2, https, aes-256, qradar siem, input sanitization, ui automation, file validation, merchant suspension, loan writeoff, collectability check",
+      "children_doc_type_uuids": [
+        "50d59db6-6f80-4e86-b0b2-5931532c88d2",
+        "86f6a88d-9971-4126-8a99-8c2ddcdc67b6"
+      ]
+    }
+  }
+]

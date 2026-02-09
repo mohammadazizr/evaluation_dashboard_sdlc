@@ -1,0 +1,120 @@
+{
+  "What is the project code and document type specified in the header of the WFMS Agile Specifications Document dated June 2023?": {
+    "entity": {
+      "date": [
+        "2023-06-01"
+      ],
+      "version": null,
+      "project_name": [
+        "WMS"
+      ],
+      "project_code": null,
+      "activity_name": null,
+      "file_calling": null,
+      "deliverable": [
+        "TSD"
+      ],
+      "sdlc_method": [
+        "Agile"
+      ]
+    }
+  },
+  "Synthesizing the WFMS documents from WMS\\BOC\\TSD\\01\\output.md (v.0.1, June 2023), WMS\\Head Office\\Agile\\TSD\\03\\output.md (v.0.6, June 2023), and WMS\\Head Office\\Agile\\BSD\\02\\output.md (Sprint 5, November 2024), what are the key differences in version numbers, sprint details, and author attributions across these Bank Mandiri WFMS specifications?": {
+    "entity": {
+      "date": [
+        "June 2023",
+        "November 2024"
+      ],
+      "version": [
+        "v.0.1",
+        "v.0.6"
+      ],
+      "project_name": [
+        "WMS"
+      ],
+      "project_code": null,
+      "activity_name": [
+        "BOC",
+        "Head Office"
+      ],
+      "file_calling": [
+        "WMS\\BOC\\TSD\\01\\output.md",
+        "WMS\\Head Office\\Agile\\TSD\\03\\output.md",
+        "WMS\\Head Office\\Agile\\BSD\\02\\output.md"
+      ],
+      "deliverable": [
+        "TSD",
+        "BRD"
+      ],
+      "sdlc_method": [
+        "Agile"
+      ]
+    }
+  },
+  "What is the current interest rate for Bank Mandiri's savings accounts as of December 2025?": {
+    "entity": {
+      "date": [
+        "2025-12-01"
+      ],
+      "version": null,
+      "project_name": null,
+      "project_code": null,
+      "activity_name": null,
+      "file_calling": null,
+      "deliverable": null,
+      "sdlc_method": null
+    }
+  },
+  "Based on WMS\\BOC\\TSD\\01\\output.md (WFMS Project Team, June 2023) and WMS\\Head Office\\Agile\\BSD\\01\\output.md (Dewa Gede Satrya Dhiatmika, 16 Maret 2023), which document indicates an earlier completion date for the WFMS project, and does this create any conflict regarding the timeline for the Workflow for Head Office activity?": {
+    "entity": {
+      "date": [
+        "June 2023",
+        "16 Maret 2023"
+      ],
+      "version": null,
+      "project_name": [
+        "WMS"
+      ],
+      "project_code": null,
+      "activity_name": [
+        "BOC",
+        "Head Office"
+      ],
+      "file_calling": [
+        "WMS\\BOC\\TSD\\01\\output.md",
+        "WMS\\Head Office\\Agile\\BSD\\01\\output.md"
+      ],
+      "deliverable": [
+        "TSD",
+        "BRD"
+      ],
+      "sdlc_method": [
+        "Agile"
+      ]
+    }
+  },
+  "In the context of the Workflow Management System (WFMS) project as detailed in the Agile Specifications Document v.0.1 from June 2023 with Project Code RCO2301010, considering the preface on functional and non-functional requirements, the document change control table, the table of contents outlining executive summary, business process requirements, and technical specifications, the confidentiality notice prohibiting disclosure to third parties, and the overall structure including image descriptions of the Bank Mandiri logo conveying stability and dynamism, how do these elements collectively inform the baseline for subsequent development activities such as design, customization, and testing, while ensuring compliance with Bank Mandiri's proprietary information policies and alignment with the project charter's agreed scope for application modules supporting business area needs?": {
+    "entity": {
+      "date": [
+        "June 2023"
+      ],
+      "version": [
+        "v.0.1"
+      ],
+      "project_name": [
+        "WMS"
+      ],
+      "project_code": [
+        "RCO2301010"
+      ],
+      "activity_name": null,
+      "file_calling": null,
+      "deliverable": [
+        "TSD"
+      ],
+      "sdlc_method": [
+        "Agile"
+      ]
+    }
+  }
+}
