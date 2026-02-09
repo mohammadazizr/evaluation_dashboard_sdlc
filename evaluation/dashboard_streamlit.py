@@ -313,34 +313,30 @@ class StreamlitDashboard:
         # Detailed metrics table
         st.subheader("Detailed Performance Metrics")
         df_metrics = self._create_metrics_table()
-        styled_df = self._style_metrics_table(df_metrics)
-        st.dataframe(styled_df, use_container_width=True)
+        st.dataframe(df_metrics, use_container_width=True)
         
         # Hierarchical metrics
         st.subheader("Hierarchical Metrics")
         tab1, tab2, tab3 = st.tabs(["By Project", "By Activity", "By Doc Type"])
-
+        
         with tab1:
             df_project = self._create_hierarchical_df('by_project')
             if not df_project.empty:
-                styled_project = self._style_hierarchical_table(df_project)
-                st.dataframe(styled_project, use_container_width=True)
+                st.dataframe(df_project, use_container_width=True)
             else:
                 st.info("No project-level metrics available")
-
+        
         with tab2:
             df_activity = self._create_hierarchical_df('by_activity')
             if not df_activity.empty:
-                styled_activity = self._style_hierarchical_table(df_activity)
-                st.dataframe(styled_activity, use_container_width=True)
+                st.dataframe(df_activity, use_container_width=True)
             else:
                 st.info("No activity-level metrics available")
-
+        
         with tab3:
             df_doc_type = self._create_hierarchical_df('by_doc_type')
             if not df_doc_type.empty:
-                styled_doc_type = self._style_hierarchical_table(df_doc_type)
-                st.dataframe(styled_doc_type, use_container_width=True)
+                st.dataframe(df_doc_type, use_container_width=True)
             else:
                 st.info("No doc-type-level metrics available")
 
@@ -353,7 +349,7 @@ class StreamlitDashboard:
         
         # Find the maximum count and create color list
         max_count = max(counts) if counts else 0
-        colors = ['#0B2D72' if count == max_count and count > 0 else '#7AB2B2' for count in counts]
+        colors = ['#FF4B4B' if count == max_count and count > 0 else '#1f77b4' for count in counts]
         
         fig = go.Figure(data=[go.Bar(
             x=positions, 
@@ -388,59 +384,12 @@ class StreamlitDashboard:
             data.append({
                 'Test Scenario': label,
                 'Total Questions': m.get('total_questions', 0),
-                'Success Rate (%)': m.get('success_rate', 0) * 100,
-                'Avg Precision (%)': m.get('average_precision', 0) * 100,
-                'Precision@3 (%)': m.get('precision_at_3', 0) * 100
+                'Success Rate (%)': f"{m.get('success_rate', 0)*100:.1f}",
+                'Avg Precision (%)': f"{m.get('average_precision', 0)*100:.1f}",
+                'Precision@3 (%)': f"{m.get('precision_at_3', 0)*100:.1f}"
             })
         
         return pd.DataFrame(data)
-
-    def _style_metrics_table(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Apply styling to highlight maximum and minimum values"""
-        if df.empty:
-            return df
-        
-        # Find max and min values for each metric column
-        max_success = df['Success Rate (%)'].max()
-        min_success = df['Success Rate (%)'].min()
-        max_precision = df['Avg Precision (%)'].max()
-        min_precision = df['Avg Precision (%)'].min()
-        max_precision_3 = df['Precision@3 (%)'].max()
-        min_precision_3 = df['Precision@3 (%)'].min()
-        
-        # Apply styling function
-        def highlight_max_min(row):
-            styles = [''] * len(row)
-            
-            # Success Rate
-            if row['Success Rate (%)'] == max_success:
-                styles[2] = 'color: #A5C89E; font-weight: bold'
-            elif row['Success Rate (%)'] == min_success:
-                styles[2] = 'color: #C40C0C; font-weight: bold'
-            
-            # Avg Precision
-            if row['Avg Precision (%)'] == max_precision:
-                styles[3] = 'color: #A5C89E; font-weight: bold'
-            elif row['Avg Precision (%)'] == min_precision:
-                styles[3] = 'color: #C40C0C; font-weight: bold'
-            
-            # Precision@3
-            if row['Precision@3 (%)'] == max_precision_3:
-                styles[4] = 'color: #A5C89E; font-weight: bold'
-            elif row['Precision@3 (%)'] == min_precision_3:
-                styles[4] = 'color: #C40C0C; font-weight: bold'
-            
-            return styles
-        
-        # Format numbers
-        styled = df.style.apply(highlight_max_min, axis=1)
-        styled = styled.format({
-            'Success Rate (%)': '{:.1f}',
-            'Avg Precision (%)': '{:.1f}',
-            'Precision@3 (%)': '{:.1f}'
-        })
-        
-        return styled
 
     def _create_hierarchical_df(self, hierarchy_type: str) -> pd.DataFrame:
         data = self.hierarchical.get(hierarchy_type, {})
@@ -452,49 +401,11 @@ class StreamlitDashboard:
             rows.append({
                 'Category': key,
                 'Total Questions': metrics.get('total_questions', 0),
-                'Success Rate (%)': metrics.get('success_rate', 0) * 100,
-                'Avg Precision (%)': metrics.get('average_precision', 0) * 100
+                'Success Rate (%)': f"{metrics.get('success_rate', 0)*100:.1f}",
+                'Avg Precision (%)': f"{metrics.get('average_precision', 0)*100:.1f}"
             })
         
         return pd.DataFrame(rows)
-
-    def _style_hierarchical_table(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Apply styling to highlight maximum and minimum values in hierarchical tables"""
-        if df.empty:
-            return df
-        
-        # Find max and min values for each metric column
-        max_success = df['Success Rate (%)'].max()
-        min_success = df['Success Rate (%)'].min()
-        max_precision = df['Avg Precision (%)'].max()
-        min_precision = df['Avg Precision (%)'].min()
-        
-        # Apply styling function
-        def highlight_max_min(row):
-            styles = [''] * len(row)
-            
-            # Success Rate
-            if row['Success Rate (%)'] == max_success:
-                styles[2] = 'color: #A5C89E; font-weight: bold'
-            elif row['Success Rate (%)'] == min_success:
-                styles[2] = 'color: #C40C0C; font-weight: bold'
-            
-            # Avg Precision
-            if row['Avg Precision (%)'] == max_precision:
-                styles[3] = 'color: #A5C89E; font-weight: bold'
-            elif row['Avg Precision (%)'] == min_precision:
-                styles[3] = 'color: #C40C0C; font-weight: bold'
-            
-            return styles
-        
-        # Format numbers
-        styled = df.style.apply(highlight_max_min, axis=1)
-        styled = styled.format({
-            'Success Rate (%)': '{:.1f}',
-            'Avg Precision (%)': '{:.1f}'
-        })
-        
-        return styled
 
 
 def load_default_results():
@@ -542,7 +453,7 @@ class ConfluenceDashboard:
                 position_counts[pos] = position_counts.get(pos, 0) + 1
         
         return position_counts
-
+    
     def render(self):
         st.set_page_config(page_title="Confluence Evaluation Dashboard", layout="wide")
         
@@ -640,7 +551,7 @@ class ConfluenceDashboard:
             
             # Find the maximum count and create color list
             max_count = max(counts) if counts else 0
-            colors = ['#0B2D72' if count == max_count and count > 0 else '#7AB2B2' for count in counts]
+            colors = ['#FF4B4B' if count == max_count and count > 0 else '#1f77b4' for count in counts]
             
             fig = go.Figure(data=[go.Bar(
                 x=positions, 
@@ -680,14 +591,256 @@ def load_confluence_results(version: str, rerank_option: str):
     
     return None
 
+def render_overall_dashboard():
+    """Render overall dashboard showing combined metrics from all data sources"""
+    st.set_page_config(page_title="Overall Evaluation Dashboard", layout="wide")
+    
+    # Custom CSS
+    st.markdown("""
+    <style>
+    .streamlit-expanderContent {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+    div[data-testid="stExpander"] {
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        margin-top: 8px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    
+    # Header
+    st.title("📊 Overall Evaluation Dashboard")
+    st.markdown("**Aggregated metrics across all evaluated data sources**")
+    st.markdown("---")
+    
+    # Load all available data sources
+    data_sources = {}
+    
+    # 1. Try to load MPM - ORP
+    try:
+        mpm_orp = load_default_results()
+        if mpm_orp:
+            data_sources['MPM - ORP'] = {
+                'type': 'mpm_orp',
+                'data': mpm_orp
+            }
+    except:
+        pass
+    
+    # 2. Try to load all Confluence - LM variants (R4 and R5, with and without rerank)
+    confluence_variants = [
+        ('R4', 'Without Rerank', 'Confluence - LM (R4 w/o Rerank)'),
+        ('R4', 'With Rerank', 'Confluence - LM (R4 w/ Rerank)'),
+        ('R5', 'Without Rerank', 'Confluence - LM (R5 w/o Rerank)'),
+        ('R5', 'With Rerank', 'Confluence - LM (R5 w/ Rerank)')
+    ]
+    
+    for version, rerank_option, display_name in confluence_variants:
+        try:
+            confluence = load_confluence_results(version, rerank_option)
+            if confluence:
+                data_sources[display_name] = {
+                    'type': 'confluence',
+                    'data': confluence
+                }
+        except:
+            pass
+    
+    # Check if we have any data
+    if not data_sources:
+        st.warning("⚠️ No evaluation data found. Please ensure evaluation results are available.")
+        return
+    
+    # Display loaded data sources
+    st.info(f"📁 **Loaded {len(data_sources)} data source(s):** {', '.join(data_sources.keys())}")
+    st.markdown("---")
+    
+    # Calculate overall metrics using weighted average
+    total_questions = 0
+    total_successful = 0
+    weighted_precision_sum = 0
+    weighted_mrr_sum = 0
+    total_top3_found = 0
+    
+    # Store individual metrics for breakdown table
+    breakdown_data = []
+    
+    for source_name, source_info in data_sources.items():
+        source_type = source_info['type']
+        data = source_info['data']
+        
+        if source_type == 'mpm_orp':
+            # Extract from MPM-ORP format
+            overall = data.get('aggregate_metrics', {}).get('overall', {})
+            questions = overall.get('total_retrieval_questions', 0)
+            success_rate = overall.get('success_rate', 0)
+            precision = overall.get('average_precision', 0)
+            precision_3 = overall.get('precision_at_3', 0)
+            
+            # Calculate MRR from detailed results
+            detailed = data.get('detailed_results', [])
+            total_rr = 0
+            count = 0
+            for item in detailed:
+                if item.get("test_type") == "no_doc":
+                    continue
+                positions = item.get("positions_found", [])
+                if positions:
+                    total_rr += 1.0 / positions[0]
+                count += 1
+            mrr = total_rr / count if count > 0 else 0
+            
+        elif source_type == 'confluence':
+            # Extract from Confluence format
+            summary = data.get('summary', {})
+            questions = data.get('total_questions', 0)
+            success_rate = summary.get('success_rate', 0) / 100  # Convert to decimal
+            precision = summary.get('avg_precision', 0) / 100  # Convert to decimal
+            precision_3 = summary.get('avg_precision_at_3', 0) / 100  # Convert to decimal
+            mrr = summary.get('mrr', 0)
+            if mrr > 1:  # If already in percentage
+                mrr = mrr / 100
+        
+        # Accumulate for weighted average
+        total_questions += questions
+        total_successful += questions * success_rate
+        weighted_precision_sum += questions * precision
+        weighted_mrr_sum += questions * mrr
+        total_top3_found += questions * precision_3
+        
+        # Store for breakdown
+        breakdown_data.append({
+            'Data Source': source_name,
+            'Total Questions': questions,
+            'Success Rate (%)': success_rate * 100,
+            'Avg Precision (%)': precision * 100,
+            'Precision@3 (%)': precision_3 * 100,
+            'MRR (%)': mrr * 100
+        })
+    
+    # Calculate overall weighted averages
+    overall_success_rate = (total_successful / total_questions * 100) if total_questions > 0 else 0
+    overall_precision = (weighted_precision_sum / total_questions * 100) if total_questions > 0 else 0
+    overall_precision_3 = (total_top3_found / total_questions * 100) if total_questions > 0 else 0
+    overall_mrr = (weighted_mrr_sum / total_questions * 100) if total_questions > 0 else 0
+    
+    # Display total questions
+    st.metric("Total Questions (All Sources)", total_questions)
+    st.markdown("---")
+    
+    # Display overall metrics
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.metric("Overall Success Rate", f"{overall_success_rate:.1f}%")
+        with st.expander("ℹ️ Info"):
+            st.write("**Overall Success Rate**")
+            st.write("Weighted average of success rates across all data sources.")
+            st.write("")
+            st.write("**Formula:**")
+            st.write("Σ(Success Rate × Questions) / Total Questions")
+            st.write("")
+            st.write("**Interpretation:**")
+            st.write("- **>80%**: Excellent")
+            st.write("- **60-80%**: Good")
+            st.write("- **<60%**: Needs improvement")
+    
+    with col2:
+        st.metric("Overall Precision", f"{overall_precision:.1f}%")
+        with st.expander("ℹ️ Info"):
+            st.write("**Overall Average Precision**")
+            st.write("Weighted average of precision across all data sources.")
+            st.write("")
+            st.write("**Formula:**")
+            st.write("Σ(Precision × Questions) / Total Questions")
+            st.write("")
+            st.write("**Interpretation:**")
+            st.write("- **>80%**: High precision")
+            st.write("- **60-80%**: Fair precision")
+            st.write("- **<60%**: Low precision")
+    
+    with col3:
+        st.metric("Overall Precision@3", f"{overall_precision_3:.1f}%")
+        with st.expander("ℹ️ Info"):
+            st.write("**Overall Precision@3**")
+            st.write("Weighted average of Precision@3 across all data sources.")
+            st.write("")
+            st.write("**Formula:**")
+            st.write("Σ(Precision@3 × Questions) / Total Questions")
+            st.write("")
+            st.write("**Interpretation:**")
+            st.write("- **>90%**: Excellent")
+            st.write("- **70-90%**: Good")
+            st.write("- **<70%**: Poor")
+    
+    with col4:
+        st.metric("Overall MRR", f"{overall_mrr:.1f}%")
+        with st.expander("ℹ️ Info"):
+            st.write("**Overall Mean Reciprocal Rank**")
+            st.write("Weighted average of MRR across all data sources.")
+            st.write("")
+            st.write("**Formula:**")
+            st.write("Σ(MRR × Questions) / Total Questions")
+            st.write("")
+            st.write("**Interpretation:**")
+            st.write("- **>80%**: Excellent")
+            st.write("- **50-80%**: Good")
+            st.write("- **<50%**: Poor")
+    
+    st.markdown("---")
+    
+    # Breakdown by data source
+    st.subheader("📋 Breakdown by Data Source")
+    
+    if breakdown_data:
+        df_breakdown = pd.DataFrame(breakdown_data)
+        
+        # Apply styling to highlight max/min values
+        def highlight_max_min(col):
+            if col.name in ['Success Rate (%)', 'Avg Precision (%)', 'Precision@3 (%)', 'MRR (%)']:
+                max_val = col.max()
+                min_val = col.min()
+                styles = []
+                for val in col:
+                    if val == max_val:
+                        styles.append('color: #A5C89E; font-weight: bold')
+                    elif val == min_val:
+                        styles.append('color: #C40C0C; font-weight: bold')
+                    else:
+                        styles.append('')
+                return styles
+            return ['' for _ in col]
+        
+        styled_df = df_breakdown.style.apply(highlight_max_min)
+        styled_df = styled_df.format({
+            'Success Rate (%)': '{:.1f}',
+            'Avg Precision (%)': '{:.1f}',
+            'Precision@3 (%)': '{:.1f}',
+            'MRR (%)': '{:.1f}'
+        })
+        
+        st.dataframe(styled_df, use_container_width=True)
+    
+    st.markdown("---")
+    st.info("💡 **Note:** Overall metrics are calculated using weighted average based on the number of questions in each data source. Only evaluated data sources are included in the calculation.")
+
+
+
 def main():
     st.sidebar.title("Settings")
     
     # Dropdown to select data source
     data_source = st.sidebar.selectbox(
         "Select Data Source",
-        ["MPM - ORP", "MPM - LM", "Confluence - LM", "Jira - LM"]
+        ["Overall", "MPM - ORP", "MPM - LM", "Confluence - LM", "Jira - LM"]
     )
+    
+    # Handle Overall page
+    if data_source == "Overall":
+        render_overall_dashboard()
+        return
     
     # Check if data is available
     if data_source == "MPM - LM":
